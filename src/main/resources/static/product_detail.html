@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="applicable-device" content="pc,mobile" />
     <title>产品详细页</title>
-    
-    
-    
+
+
+    <link rel="icon" href="favicon.ico">
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/glide.css" rel="stylesheet" />
     <link href="css/detailGlide.css" rel="stylesheet" />
@@ -27,107 +27,11 @@
 </head>
 
 <body>
-    
-    <header>
 
-        <div class="">
-            <!--<div class="borderBottom">
-                <div class="container">
-                    <div class="welcomeBox">欢迎光临官方企业网站</div>
-                    <div class="languageBox">
-                        <a href="#" class="en">English</a><a href="#" class="zh">中文版</a>
-                    </div>
-                </div>
-            </div>-->
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-8 logo"><a href="index.html"><img src="images/logo.png"/>长治市安保通科技有限公司</a></div>
+<div id="head">
 
-                    <div class="col-xs-6 col-sm-3 col-md-2">
-                        <div class="address"></div>
-                    </div>
+</div>
 
-                    <div class="col-xs-6 col-sm-3 col-md-2">
-                        <div class="tel">
-                            <img src="images/tel.gif" alt="" /><br />400-8888-8888
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <nav class="navbar navbar-static-top navbar-default">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html"></a>             
-                </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-
-                        <li><a href="index.html">网站首页</a></li>
-
-                        <li class="dropdown">
-                            <a href="about.html" class="dropdown-toggle" data-toggle="dropdown">关于我们</a><a href="#" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-down btn-xs"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a class='' href='about.html'>公司简介</a></li>
-                                <li><a class='' href='contact.html'>联系我们</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="article.html" class="dropdown-toggle" data-toggle="dropdown">新闻中心</a><a href="#" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-down btn-xs"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a class='' href='article.html'>公司新闻</a></li>
-                                <li><a class='' href='article.html'>行业新闻</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="product.html" class="dropdown-toggle" data-toggle="dropdown">产品中心</a><a href="#" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-down btn-xs"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a class='' href='product.html'>产品分类1</a><span>+</span>
-                                    <ul>
-                                        <li><a class='' href='product.html'>产品子分类1</a><ul></ul></li>
-                                        <li><a class='' href='product.html'>产品子分类2</a><ul></ul></li>
-                                    </ul>
-                                </li>
-                                <li><a class='' href='product.html'>产品分类2</a></li>
-                                <li><a class='' href='product.html'>产品分类3</a></li>
-                                <li><a class='' href='product.html'>产品分类4</a></li>
-                                <li><a class='' href='product.html'>产品分类5</a></li>
-                            </ul>
-                        </li>
-
-                        <li><a href="album.html">案例中心</a></li>
-
-                        <li><a href="comment.html">在线留言</a></li>
-
-                        <li><a href="contact.html">联系我们</a></li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-    </header>
-    
-    <!-- Banner -->
-    <div class="banner">
-        <div class="slider">
-            <ul class="slider__wrapper">
-                <li class="slider__item"><a target="_blank" title="1" href="" style="background-image:url(images/2.jpg)"><img src="images/banner-2.png" alt="MojoCube 官方" /></a></li>
-                <li class="slider__item"><a target="_blank" title="2" href="" style="background-image:url(images/2.jpg)"><img src="images/banner-2.png" alt="MojoCube 官方" /></a></li>
-            </ul>
-        </div>
-    </div>
-    
     <script type="text/javascript">
         var glide = $('.slider').glide();
     </script>
@@ -460,6 +364,7 @@
     <!--手机版 end-->
 
     <script type="text/javascript">
+        $("#head").load("common.html");
         function mShare() {
             $("#mShareBox").toggle();
             $("#serviceBox").hide();

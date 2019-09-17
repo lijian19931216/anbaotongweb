@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="applicable-device" content="pc,mobile" />
     <title>新闻中心</title>
-    
-    
-    
+
+
+    <link rel="icon" href="favicon.ico">
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/glide.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
@@ -26,12 +26,9 @@
 
 <body>
 
-<div>
-    <iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no
-            src="common.html" height="650px" width="100%"></iframe>
+<div id="head">
 
 </div>
-    
 
     
     <script type="text/javascript">
@@ -200,6 +197,9 @@
     <!--手机版 end-->
 
     <script type="text/javascript">
+        $("#head").load("common.html",function () {
+            $("#eighth_li a").css({"background": "#3477c8","color":"#fff"});
+        });
         function mShare() {
             $("#mShareBox").toggle();
             $("#serviceBox").hide();
