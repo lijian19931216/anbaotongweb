@@ -49,26 +49,25 @@
 
                 <div class="col-sm-12 col-md-12 pad">
                     
-                    <div class="productList">
+                    <div class="productList" id="productList">
                     
-                        <div class="col-xs-6 col-sm-4 col-md-3 col-mm-6 productImg">
-                            <a title="视频会议" href='product/video_meeting.html'>
-                                <span class="imgLink-hover"><span class="hover-link"></span></span>
+                        <!--<div class="col-xs-6 col-sm-4 col-md-3 col-mm-6 productImg">
+                            <a href='products/video_meeting/video_meeting.html'>
                                 <img src="images/products/video_meeting/1.jpg"  />
                             </a>
-                            <a class="productTitle" href="javascript:;" title="视频会议">
+                            <a class="productTitle" href="javascript:;" >
                                 视频会议
                             </a>
                         </div>
                         <div class="col-xs-6 col-sm-4 col-md-3 col-mm-6 productImg">
-                            <a title="智能家居" href='product/video_meeting.html'>
+                            <a title="智能家居" href='products/video_meeting/video_meeting.html'>
                                 <span class="imgLink-hover"><span class="hover-link"></span></span>
                                 <img src="images/products/video_meeting/1.jpg"  />
                             </a>
                             <a class="productTitle" href="javascript:;" title="智能家居">
                                 智能家居
                             </a>
-                        </div>
+                        </div>-->
                             
 
                            
@@ -92,7 +91,7 @@
         <div class="copyright">
             <p>
                 <a href="about.html">公司简介</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="article.html">新闻中心</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="news/company_news.html">新闻中心</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="product.html">产品中心</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="contact.html">联系我们</a>
             </p>
@@ -107,9 +106,7 @@
     <!--电脑版-->
 
     
-    <div id="serviceBox" style="display:none">
-        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=396288955&site=qq&menu=yes"><img class="qqimg" src="http://wpa.qq.com/pa?p=2:593036114:52" alt="QQ在线客服" />技术支持</a>
-    </div>
+
 
     <script type="text/javascript" src="js/online.js"></script>
 
@@ -131,10 +128,37 @@
     <!--手机版 end-->
 
     <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                url: "hello",
+                data: {name: 'jenny'},
+                type: "POST",
+                dataType: "json",
+                success: function(data) {
+                    var html = "";
+                    var productList = data.producList;
+                    if(productList){
+                        for(var i=0;i<productList.length;i++){    //遍历data数组
+                            var ls = productList[i];
+                            html+="<div class='col-xs-6 col-sm-4 col-md-3 col-mm-6 productImg'>"+
+                            "<a href='"+ls.src+"'>"+
+                            "  <img src='"+ls.src+"' /></a>"+
+                            "  <a class='productTitle' href='javascript:;' >"+
+                                ls.name+"</a></div>";
+                        }
+                        $("#productList").html(html); //在html页面id=test的标签里显示html内容
+                    }
+
+
+                },});
+
+
+        });
+
         $("#head").load("common.html",function () {
             $("#second_li a").css({"background": "#3477c8","color":"#fff"});
         });
-        $(".left_menu").load("left_menu.html");
+        $(".left_menu").load("left_product_menu.html");
         function mShare() {
             $("#mShareBox").toggle();
             $("#serviceBox").hide();
