@@ -177,7 +177,7 @@ td{color:#666}
 .leftContactBox{ margin:20px 0px 20px 0px;background: url(telbg.jpg);background-size:cover;overflow:hidden;height:auto;}
 .leftContactBox .content{display:block;padding:10px;background:rgba(255,255,255,0.8);color:#333;font-size:12px;overflow:hidden;margin-top:0px}
 .leftContactBox .content *{color:#333}
-#rightBox{float:right;height: 600px;}
+#rightBox{float:right;/*height: 850px;*/}
 
 .linkList{width:auto;float:left;overflow:hidden;}
 .linkList li{float:left;width:auto;margin-left:20px;}
@@ -358,9 +358,9 @@ footer a:hover{color:#fff}
 	.navbar-default .navbar-nav > .open > a:focus {background:#3477c8; color: #fff;}
 	.navbar-default .navbar-nav-e > li > a{font-weight: normal; }
 	.navbar .dropdown-menu{background:#3477c8;border:none;color:#fff;padding:0px;border-radius:0px;min-width: 145px;}
-	.navbar .dropdown-menu li a{color:#fff;line-height:35px;padding:0px;text-align:center;font-size:12px;}
+	.navbar .dropdown-menu li a{color:#fff;line-height:35px;padding:5px;text-align:center;font-size:14px;}
 	.navbar .dropdown-menu li a:hover{background:#abcf63;}
-	.navbar .dropdown-menu li ul{display:none;position:absolute;z-index:9999;margin-top:-35px;margin-left:145px;width:145px;background:#3477c8;}
+	.navbar .dropdown-menu li ul{display:none;position:absolute;z-index:9999;margin-top:-45px;margin-left:145px;width:145px;background:#3477c8;}
 	.navbar .dropdown-menu li ul a{display:block;}
 	.navbar .dropdown-menu li ul li ul{display:none;position:absolute;z-index:9999;margin-left:145px;}
 	.navbar .dropdown-menu a span{display:none;}

@@ -1,0 +1,51 @@
+<div class="col-xs-12 col-sm-4 col-md-3">
+
+    <div class="navigationBox" id="classification">
+        <div class="titleBar">
+            <h1>导航栏目</h1>
+            <span></span>
+        </div>
+        <div class="list">
+            <ul id="firstpane">
+                <li><a class='' href='http://www.gzshaudio.com/klem.asp'>台湾歌利来</a></li>
+                <li><a class='' href='aboutus/about.html'>埃克斯智能</a></li>
+                <li><a class='' href='/anbaotong/products/smart_movie/equipment_desc.html'>设备介绍</a><span>+</span>
+
+                    <ul>
+
+                        <li><a id="_1" class='' href='/anbaotong/products/smart_movie/equipment_desc.html'>星空顶</a><ul></ul></li>
+                        <li><a id="_2" class='' href='/anbaotong/products/smart_movie/projector.html'>投影机</a><ul></ul></li>
+                        <li><a id="_3" class='' href='/anbaotong/products/smart_movie/screen.html'>幕布</a><ul></ul></li>
+                    </ul>
+                </li>
+                <li><a class='' href='aboutus/about.html'>解决方案</a><span>+</span>
+
+                    <ul>
+                        <li><a id="_4" class='' href='product.html'>客厅影院</a><ul></ul></li>
+                        <li><a id="_5" class='' href='product.html'>卧室影院</a><ul></ul></li>
+                        <li><a id="_6" class='' href='product.html'>私家尊享</a><ul></ul></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+
+</div>
+<script type="text/javascript">
+
+    $("#firstpane span").click(function(){
+        var spanatt = $(this).next("ul").css('display');
+        if (spanatt == "block"){
+            var spantext = "+";
+            // $(this).prev().removeClass("left_active");
+        }else{
+            var spantext = "-";
+            //$(this).prev().addClass("left_active");
+        }
+        $(this).html(spantext).addClass("current").next("ul").slideToggle(300).siblings("ul");
+    });
+</script>
+

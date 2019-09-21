@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="applicable-device" content="pc,mobile" />
-    <title>产品中心</title>
+    <title>智能影院</title>
 
 
     <link rel="icon" href="../../favicon.ico">
@@ -43,15 +43,13 @@
                     <div class="titleBar">
                         <h1>当前位置</h1>
                         <span></span>
-                        <a >产品中心</a>&gt;<a>视频会议</a>
+                        <a >智能影院</a>&gt;<a>设备介绍</a>&gt;<a>幕布</a>
                     </div>
                 </div>
 
                 <div class="col-sm-12 col-md-12 pad">
-                    <div>
-                        <p style="text-indent: 2em;line-height: 25px;">
-                            视频会议系统，又称会议电视系统，这是指两个或两个以上不同地方的个人或群体，通过传输线路及多媒体设备，将声音、影像及文件资料互传，实现即时且互动的沟通，以实现远程会议的系统设备。视频会议的使用有点像电话，除了能看到与你通话的人并进行语言交流外，还能看到他们的表情和动作，使处于不同地方的人就像在同一会议室内沟通。
-                            视频会议系统的应用范围非常广泛，可应用在网络视频会议、协同办公、在线培训、远程医疗、远程教育等各个方面，能广泛应用于政府、军队、企业、IT、电信、电力、教育、医疗、证券、金融、制造等各个领域。
+                    <div style="text-indent: 2em;line-height: 25px;">
+                        <p>幕布
                         </p>
 
                     </div>
@@ -59,27 +57,27 @@
                     <div class="productList">
                     
                         <div class="col-xs-6 col-sm-4 col-md-3 col-mm-6 productImg">
-                            <a title="视频会议1" href='video_meeting_detail.html'>
-                                <span class="imgLink-hover"><span class="hover-link"></span></span>
-                                <img src="../../images/products/video_meeting/1.jpg" />
+                            <a href='smart_movie_detail.html'>
+                                <img src="../../images/products/smart_movie/1.jpg" />
                             </a>
-                            <a class="productTitle" href="javascript:;" title="视频会议1">
-                                视频会议1
+                            <a class="productTitle" href="javascript:;">
+                                幕布
+
                             </a>
                         </div>
-                            
 
-
-                           
                     </div>
+<!--
 
                     <div class='pageBar'><div class='pageList'><a class='selected'>1</a></div></div>
+-->
 
                 </div>
 
+
             </div>
 
-            <div id="left_product_menu">
+            <div id="left_smartmovie_menu">
 
             </div>
 
@@ -89,19 +87,22 @@
     
 
     
-    <script type="text/javascript" src="../../js/common.js"></script>
+
     
 
 
 
 
     <script type="text/javascript">
+
+
         $("#head").load("../../common.html",function () {
-            $("#second_li>a").css({"background": "#3477c8","color":"#fff"});
+            $("#fifth_li>a").css({"background": "#3477c8","color":"#fff"});
         });
         $("#foot").load("../../common_foot.html");
-        $("#left_product_menu").load("../../left_product_menu.html",function () {
-            $("#_1").css({"font-weight": "bold","color":"#3477c8"});
+        $("#left_smartmovie_menu").load("../../left_smartmovie_menu.html",function () {
+            $("#_3").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").siblings("span").click();
+
         });
 
 
