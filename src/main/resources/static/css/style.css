@@ -1,4 +1,4 @@
-﻿body{font-family:"微软雅黑";background:#fff;color:#666}
+﻿body{font-family:"微软雅黑";background:#fff;color:#000}
 ul li{list-style-type:none}
 a{color:#666;text-decoration:none}
 a:hover{color:#000;text-decoration:none}
@@ -177,7 +177,7 @@ td{color:#666}
 .leftContactBox{ margin:20px 0px 20px 0px;background: url(telbg.jpg);background-size:cover;overflow:hidden;height:auto;}
 .leftContactBox .content{display:block;padding:10px;background:rgba(255,255,255,0.8);color:#333;font-size:12px;overflow:hidden;margin-top:0px}
 .leftContactBox .content *{color:#333}
-#rightBox{float:right;/*height: 850px;*/}
+#rightBox{float:right;min-height: 800px;/*height: 850px;*/}
 
 .linkList{width:auto;float:left;overflow:hidden;}
 .linkList li{float:left;width:auto;margin-left:20px;}

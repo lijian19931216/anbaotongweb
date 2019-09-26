@@ -29,6 +29,7 @@
 <div id="head">
 
 </div>
+<div id="head"></div>
 
     <script type="text/javascript">
         var glide = $('.slider').glide();
@@ -44,7 +45,7 @@
                     <div class="titleBar">
                         <h1>当前位置</h1>
                         <span></span>
-                        <a href="../index.html">首页</a> > <a href="company_news.html">新闻中心</a>
+                        <a>新闻中心</a> &gt;<a>公司新闻</a>
                     </div>
                 </div>
 
@@ -98,81 +99,36 @@
                     </div>
                 </div>
                 
-                <div class="leftContactBox">     
-                    <div class="content"> 
-                        <p style="padding-top:20px;">联系人：张经理</p>
-                        <p>手机：13800138000</p>
-                        <p>电话：020-88668888</p>
-                        <p>邮箱：mojocube@qq.com</p>
-                        <p>地址： 广东省广州市天河区天粤垦路88号</p>
-                    </div>
-                </div>
+
 
             </div>
 
         </div>
     </div>
-    
-    <footer>
-    
-        <div class="copyright">
-            <p>
-                <a href="../aboutus/about.html">公司简介</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="company_news.html">新闻中心</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="../product.html">产品中心</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="../aboutus/contact.html">联系我们</a>
-            </p>
-            <p class="copyright_p">2013-2019 © 长治市安保通科技有限公司版权所有 晋ICP  备19004853号</p>
-        </div>
-
-    </footer>
+   <div id="foot"></div>
     
     <script type="text/javascript" src="../js/common.js"></script>
     
     <!--客服面板-->
     <!--电脑版-->
 
-    
-    <div id="serviceBox" style="display:none">
-        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=396288955&site=qq&menu=yes"><img class="qqimg" src="http://wpa.qq.com/pa?p=2:593036114:52" alt="QQ在线客服" />技术支持</a>
-    </div>
 
-    <script type="text/javascript" src="../js/online.js"></script>
+
 
     <!--电脑版 end-->
 
-    <!--手机版-->
-    <nav class="navbar-default navbar-fixed-bottom footer_nav" style="background:#fafafa;">
-        <div class="foot_nav"><a href="javascript:mShare()"><span class="glyphicon glyphicon-share btn-lg" aria-hidden="true"></span>分享</a></div>
-        <div class="foot_nav"><a href=""><span class="glyphicon glyphicon-phone btn-lg" aria-hidden="true"></span>电话</a></div>
-        <div class="foot_nav" id="serviceBtn"><a onClick="showService()"><span class="glyphicon glyphicon glyphicon-headphones btn-lg" aria-hidden="true"></span>客服</a></div>
-        <div class="foot_nav"><a id="gototop" href="#"><span class="glyphicon glyphicon-circle-arrow-up btn-lg" aria-hidden="true"></span>顶部</a></div>
-        <div id="mShareBox" style="position: fixed; display: none; z-index: 999; bottom: 47px; width: 100%; height: 45px; background: #fff; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 5px;">
-            <!-- JiaThis Button BEGIN -->
-            <div class="jiathis_style_m"></div>
-            <script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_m.js" charset="utf-8"></script>
-            <!-- JiaThis Button END -->
-        </div>
-    </nav>
-    <!--手机版 end-->
 
     <script type="text/javascript">
-        $("#head").load("common.html",function () {
+        $("#head").load("../common.html",function () {
             $("#eighth_li>a").css({"background": "#3477c8","color":"#fff"});
         });
-        function mShare() {
-            $("#mShareBox").toggle();
-            $("#serviceBox").hide();
-        }
+        $("#foot").load("../common_foot.html");
 
         if ($(".banner .slider__wrapper li").length == 0) {
             $(".banner").addClass("emptyBanner");
         }
 
-        function showService() {
-            $("#mShareBox").hide();
-            $("#serviceBox").toggle();
-        }
+
     </script>
 
 </body>

@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="applicable-device" content="pc,mobile" />
+    <title>智能影院</title>
+
+
+    <link rel="icon" href="../favicon.ico">
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/glide.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/online.css" rel="stylesheet" />
+    <script src="../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../js/jquery.glide.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js" type="text/javascript"></script>
+    <script src="../js/respond.min.js" type="text/javascript"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div id="head">
+
+</div>
+    <script type="text/javascript">
+        var glide = $('.slider').glide();
+    </script>
+    
+    <!-- 内容 -->
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-8 col-md-9" id="rightBox">
+
+                <div class="positionBox">
+                    <div class="titleBar">
+                        <h1>当前位置</h1>
+                        <span></span>
+                        <a >智能影院</a>&gt;<a>解决方案</a>&gt;<a>卧室影院</a>
+                    </div>
+                </div>
+
+                <style type="text/css">
+                    .pad p{
+                        text-indent: 2em;
+                        line-height: 35px;
+                        font-size: 20px;
+                    }
+                    .pad h3{
+                        color: red;
+                    }
+
+                </style>
+
+                <div class="col-sm-12 col-md-12 pad">
+                    
+
+                    <div class="">
+
+                        <div class="col-xs4 productImg">
+                            <img src="images/woshi_cinema/1.jpg">
+
+                            <h3>卧室影院设计</h3>
+                            <p>
+                                卧室影院相对于独立影音室自由度要高许多,既可以采用大画面前投系统也可以采用平板电视、激光电视作为整套系统的显示部分。而在音频系统方面,则同样可以选择传统落地音箱、卫星音箱、隐藏式音箱。
+                            </p>
+                            <img src="images/woshi_cinema/2.jpg">
+
+                            <h3>卧室影院声学处理</h3>
+                            <p>
+                                在装修卧室家庭影院时,除了布线需要特别重视之外,还应预防卧室影院产生的声压问题,很大的声压足以惊动左邻右舍、楼上楼下,所以卧室影音的隔音和吸音必须做到位,这样才可以心安理得的坐在家中享受超清电影带来的震撼效果。同时吸音装修到位,也可以让声音更纯净,减少声音的反射千扰。所以对于卧室家庭影院来说,吸音和隔音是必须要做的。
+                            </p>
+                            <img src="images/woshi_cinema/3.jpg">
+
+
+                        </div>
+
+                    </div>
+<!--
+
+                    <div class='pageBar'><div class='pageList'><a class='selected'>1</a></div></div>
+-->
+
+                </div>
+
+
+            </div>
+
+            <div id="left_smartmovie_menu">
+
+            </div>
+
+        </div>
+    </div>
+<div id="foot"></div>
+
+    <script type="text/javascript">
+
+
+        $("#head").load("../common.html",function () {
+            $("#fifth_li>a").css({"background": "#3477c8","color":"#fff"});
+        });
+        $("#foot").load("../common_foot.html");
+        $("#left_smartmovie_menu").load("../left_smartmovie_menu.html",function () {
+            $("#_5").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").siblings("span").click();
+
+        });
+
+
+        if ($(".banner .slider__wrapper li").length == 0) {
+            $(".banner").addClass("emptyBanner");
+        }
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="applicable-device" content="pc,mobile" />
+    <title>产品中心</title>
+
+
+    <link rel="icon" href="../favicon.ico">
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/glide.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/online.css" rel="stylesheet" />
+    <script src="../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../js/jquery.glide.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js" type="text/javascript"></script>
+    <script src="../js/respond.min.js" type="text/javascript"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div id="head">
+
+</div>
+<script type="text/javascript">
+    var glide = $('.slider').glide();
+</script>
+
+<!-- 内容 -->
+<div class="container">
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-8 col-md-9" id="rightBox">
+
+            <div class="positionBox">
+                <div class="titleBar">
+                    <h1>当前位置</h1>
+                    <span></span>
+                    <a >智能影院</a>&gt;<a>设备介绍</a>&gt;<a>星空顶</a>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 pad">
+                <div>
+                    <p style="text-indent: 2em;line-height: 25px;">
+                        星空顶（又称光纤满天星星空顶，星空吊顶，光纤灯），是融合了二十一世纪最新科技的一种绿色照明方式，以其时尚前卫，深具个性魅力的独特效果，实现了科技与艺术的完美结合，近年来在国内外各类中高档私人休闲会所的空间装饰中获得了越来越广泛的推崇。
+                    </p>
+
+                </div>
+
+                <div class="">
+
+                    <div class="col-xs-12 productImg">
+                       <!-- <a  href='smart_home_detail.html'>
+                            <span class="imgLink-hover"><span class="hover-link"></span></span>
+                            <img src="../images/products/smart_home/1.png" />
+                        </a>
+                        <a class="productTitle" href="javascript:;">
+                            星空顶
+                        </a>-->
+                        <img src="images/star_top/1.jpg" />
+
+                    </div>
+                    <div class="col-xs-12 productImg">
+                    <img src="images/star_top/2.jpg" />
+                </div>
+                    <div class="col-xs-12 productImg">
+                        <img src="images/star_top/3.jpg" />
+                    </div>
+                    <div class="col-xs-12 productImg">
+                        <img src="images/star_top/4.jpg" />
+                    </div>
+                    <div class="col-xs-12 productImg">
+                        <img src="images/star_top/5.jpg" />
+                    </div>
+                    <div class="col-xs-12 productImg">
+                        <img src="images/star_top/6.jpg" />
+                    </div>
+
+
+
+
+                </div>
+
+                <!--<div class='pageBar'><div class='pageList'><a class='selected'>1</a></div></div>-->
+
+            </div>
+
+        </div>
+
+        <div id="left_smartmovie_menu">
+
+        </div>
+
+    </div>
+</div>
+<div id="foot"></div>
+
+
+
+<!--<script type="text/javascript" src="../../js/common.js"></script>-->
+
+
+
+
+
+<script type="text/javascript">
+    $("#head").load("../common.html",function () {
+        $("#fifth_li>a").css({"background": "#3477c8","color":"#fff"});
+    });
+    $("#foot").load("../common_foot.html");
+    $("#left_smartmovie_menu").load("../left_smartmovie_menu.html",function () {
+        $("#_1").css({"font-weight": "bold","color":"#3477c8"}).parent("li").parents("ul")
+            .siblings("span").click();
+        ;
+    });
+
+
+    if ($(".banner .slider__wrapper li").length == 0) {
+        $(".banner").addClass("emptyBanner");
+    }
+
+
+</script>
+
+</body>
+</html>

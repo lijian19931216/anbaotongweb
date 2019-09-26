@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="applicable-device" content="pc,mobile" />
+    <title>智能影院</title>
+
+
+    <link rel="icon" href="../../favicon.ico">
+    <link href="../../css/bootstrap.css" rel="stylesheet" />
+    <link href="../../css/glide.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="../../css/online.css" rel="stylesheet" />
+    <script src="../../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../../js/jquery.glide.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js" type="text/javascript"></script>
+    <script src="../js/respond.min.js" type="text/javascript"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div id="head">
+
+</div>
+    <script type="text/javascript">
+        var glide = $('.slider').glide();
+    </script>
+    
+    <!-- 内容 -->
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-8 col-md-9" id="rightBox">
+
+                <div class="positionBox">
+                    <div class="titleBar">
+                        <h1>当前位置</h1>
+                        <span></span>
+                        <a >智能影院</a>&gt;<a>设备介绍</a>&gt;<a>幕布</a>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-12 pad">
+                    <div style="text-indent: 2em;line-height: 25px;">
+                        <p>幕布
+                        </p>
+
+                    </div>
+                    
+                    <div id="productList" class="">
+                    
+
+                        <!--  <div class="col-xs-4  productImg">
+                              <a href='projector_DU5671.html'>
+                                  <img src="../../images/products/smart_movie/1.jpg" />
+                              </a>
+                              <a class="productTitle" href="javascript:;">
+                                  DU5671
+                              </a>
+                          </div>-->
+
+                    </div>
+<!--
+
+                    <div class='pageBar'><div class='pageList'><a class='selected'>1</a></div></div>
+-->
+
+                </div>
+
+
+            </div>
+
+            <div id="left_smartmovie_menu">
+
+            </div>
+
+        </div>
+    </div>
+<div id="foot"></div>
+    
+
+    
+
+    
+
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                url: getUrl("screenList"),
+                data: {},
+                type: "POST",
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    var html = "";
+                    var productList = data;
+                    if(productList){
+                        for(var i=0;i<productList.length;i++){    //遍历data数组
+                            var ls = productList[i];
+                            html+="<div class='col-xs-4 productImg'>"+
+                                "<a href='screen_detail.html?id="+ls.id+"'>"+
+                                "  <img src='"+contextpath+ls.imgUrl+"' /></a>"+
+                                "  <a class='productTitle' href='javascript:;' >"+
+                                ls.name+"</a></div>";
+                        }
+                        $("#productList").html(html); //在html页面id=test的标签里显示html内容
+                    }
+
+
+                },});
+
+
+        });
+
+        $("#head").load("../../common.html",function () {
+            $("#fifth_li>a").css({"background": "#3477c8","color":"#fff"});
+        });
+        $("#foot").load("../../common_foot.html");
+        $("#left_smartmovie_menu").load("../../left_smartmovie_menu.html",function () {
+            $("#_3").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").siblings("span").click();
+
+        });
+
+
+        if ($(".banner .slider__wrapper li").length == 0) {
+            $(".banner").addClass("emptyBanner");
+        }
+
+
+    </script>
+
+</body>
+</html>

@@ -73,7 +73,7 @@
 
             </div>
 
-            <div id="left_product_menu">
+            <div id="left_support_menu">
 
             </div>
 
@@ -94,22 +94,15 @@
             $("#sixth_li>a").css({"background": "#3477c8","color":"#fff"});
         });
         $("#foot").load("../common_foot.html");
-        $("#left_product_menu").load("../left_support_menu.html",function () {
+        $("#left_support_menu").load("../left_support_menu.html",function () {
             $("#_4").css({"font-weight": "bold","color":"#3477c8"});
         });
-        function mShare() {
-            $("#mShareBox").toggle();
-            $("#serviceBox").hide();
-        }
 
         if ($(".banner .slider__wrapper li").length == 0) {
             $(".banner").addClass("emptyBanner");
         }
 
-        function showService() {
-            $("#mShareBox").hide();
-            $("#serviceBox").toggle();
-        }
+
     </script>
 
 </body>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="applicable-device" content="pc,mobile" />
+    <title>产品详细页</title>
+
+
+    <link rel="icon" href="../../favicon.ico">
+    <link href="../../css/bootstrap.css" rel="stylesheet" />
+    <link href="../../css/glide.css" rel="stylesheet" />
+    <link href="../../css/detailGlide.css" rel="stylesheet" />
+    <link href="../../css/lightgallery.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="../../css/online.css" rel="stylesheet" />
+    <script src="../../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../../js/jquery.glide.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js" type="text/javascript"></script>
+    <script src="../js/respond.min.js" type="text/javascript"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div id="head">
+
+</div>
+
+<script type="text/javascript">
+    var glide = $('.slider').glide();
+</script>
+
+<!-- 内容 -->
+<div class="container">
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-8 col-md-9" id="rightBox">
+
+            <div class="positionBox">
+                <div class="titleBar">
+                    <h1>当前位置</h1>
+                    <span></span>
+                    <a >产品中心</a> &gt; <a >智能门锁</a> &gt; 达文西-DF202
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 pad">
+
+                <div class="col-sm-12 col-md-6 pad">
+                    <div class="detailGlide" style="max-width:600px; margin:0 auto">
+                        <div class="slider">
+                            <ul class="slider__wrapper">
+                                <li data-responsive='' data-src='images/DF101_1.png' data-sub-html='' class='slider__item real'><a><img src='images/DF202/DF202_1.png'></a></li>
+                                <li data-responsive='' data-src='images/DF101_2.png' data-sub-html='' class='slider__item real'><a><img src='images/DF202/DF202_2.png'></a></li>
+                                <li data-responsive='' data-src='images/DF101_3.png' data-sub-html='' class='slider__item real'><a><img src='images/DF202/DF202_3.png'></a></li>
+                            </ul>
+                        </div>
+                        <div id="detailNav">
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        var glide = $('.slider').glide({ navigationImg: true, navigation: "#detailNav" });
+                    </script>
+                </div>
+
+                <div class="col-sm-12 col-md-6 pad">
+                    <div class="detailTitle">
+                        DF202人脸识别智能锁
+                    </div>
+                    <div class="detailParameter" style="line-height:1.8em;">
+                        类别：2系指纹密码锁<br>
+
+                        简介：深圳名创博能公司专业别墅指纹锁厂家,提供达文西指纹锁,别墅指纹锁,铜门指纹锁,指纹密码锁,指纹防盗锁,智能指纹锁批发.别墅指纹锁价格：0755-23078892.达文西智能指纹锁致力提供高品质产品，引进世界顶级器件供应商：瑞典FPC指纹采集器；韩国ADS触摸芯片，日本电源芯片，美国ST处理芯片，荷兰NXP读卡芯片，日本电感，美国TI驱动芯片，结合名创博能自身优秀的研发技术团队，均从业十年以上的电子锁研发技术经验，为用户带来全新的指纹锁智能生活体验。
+
+                    </div>
+                    </div>
+
+                <div class="col-sm-12 col-md-12 pad">
+                    <div class="detailTitleTxt">
+                        详情
+                    </div>
+                    <div class="detailContent" style="line-height:1.8em;">
+
+
+                        <img src="images/DF202/DF202_5.jpg">
+                        <img src="images/DF202/DF202_4.jpg">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-md-3">
+
+            <div class="navigationBox" id="classification">
+                <div class="titleBar">
+                    <h1>导航栏目</h1>
+                    <span></span>
+                </div>
+                <div class="list">
+                    <ul id="firstpane">
+
+                        <li><a class='selected' href='smart_lock.html'>智能门锁</a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+<div id="foot"></div>
+
+<script type="text/javascript" src="../../js/common.js"></script>
+
+<!--客服面板-->
+
+
+<script type="text/javascript">
+    $("#head").load("../../common.html",function () {
+        $("#second_li>a").css({"background": "#3477c8","color":"#fff"});
+    });
+
+    $("#foot").load("../../common_foot.html");
+    if ($(".banner .slider__wrapper li").length == 0) {
+        $(".banner").addClass("emptyBanner");
+    }
+
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.slider__wrapper').lightGallery({ selector: ".real" });
+    });
+</script>
+
+<script src="../../js/picturefill.min.js"></script>
+
+<script src="../../js/lightgallery.js"></script>
+
+<script src="../../js/lg-fullscreen.js"></script>
+
+<script src="../../js/lg-thumbnail.js"></script>
+
+<script src="../../js/lg-video.js"></script>
+
+<script src="../../js/lg-autoplay.js"></script>
+
+<script src="../../js/lg-zoom.js"></script>
+
+<script src="../../js/lg-hash.js"></script>
+
+<script src="../../js/lg-pager.js"></script>
+
+</body>
+</html>
