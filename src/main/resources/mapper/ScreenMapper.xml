@@ -40,4 +40,15 @@
           select * from product_screen pc
           left join product_image pi on pc.id = pi.pro_id
       </select>-->
+    <insert id="insertProductScreen" parameterType="FormBean">
+INSERT INTO `product_screen`(`id`, `name`, `describe`) VALUES(#{id},#{prodctName},#{productDesc})
+    </insert>
+
+    <insert id="insertProductImage" parameterType="java.util.List">
+    insert into `product_image`(`pro_id`, `ori_img_name`, `new_img_name`, `img_url`, `status`)
+      values
+      <foreach collection="list" item="image" separator=",">
+        (#{image.proId},#{image.oriImgName},#{image.newImgName},#{image.imgUrl},#{image.status})
+    </foreach>
+    </insert>
 </mapper>

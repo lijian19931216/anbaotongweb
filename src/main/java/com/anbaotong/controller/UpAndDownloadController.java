@@ -1,9 +1,14 @@
 package com.anbaotong.controller;
 
+import com.anbaotong.bean.FormBean;
+import com.anbaotong.bean.ProductImage;
+import com.anbaotong.mapper.ScreenMapper;
 import com.anbaotong.util.FileUtil;
+import com.anbaotong.util.UuidUtil;
 import com.anbaotong.util.YamlConfigurerUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +21,9 @@ import java.io.*;
 import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * @description:
@@ -26,17 +33,20 @@ import java.util.Calendar;
 @RestController
 @Slf4j
 public class UpAndDownloadController {
-   /* @ResponseBody
-    @RequestMapping("/fileUpload")
-    public JSONObject fileUpload1(@RequestParam("file") MultipartFile[] files, HttpServletRequest request) throws Exception{
-        String serverName = "文件上传";
-        fileUpload(files,request);
-        Map<String,Object> resMap = new HashMap<String,Object>();
-        //0:操作成功
-        resMap.put("code", "-1");
-        resMap.put("desc","");
-        return null;
-    }*/
+
+
+
+    /* @ResponseBody
+            @RequestMapping("/fileUpload")
+            public JSONObject fileUpload1(@RequestParam("file") MultipartFile[] files, HttpServletRequest request) throws Exception{
+                String serverName = "文件上传";
+                fileUpload(files,request);
+                Map<String,Object> resMap = new HashMap<String,Object>();
+                //0:操作成功
+                resMap.put("code", "-1");
+                resMap.put("desc","");
+                return null;
+            }*/
     @RequestMapping("/product1")
     public void fileUpload(@RequestParam("file")MultipartFile[] files, HttpServletRequest request) throws Exception {
         //文件命名
@@ -60,14 +70,13 @@ public class UpAndDownloadController {
             }
         }
     }
-
-    @PostMapping("/multiUpload")
-    public String multiUpload(MultipartFile[] files) {
-        String filePath = YamlConfigurerUtil.getStrYmlVal("filepath");
+    private void upload(MultipartFile[] files,String dirName,String id,int status){
+        String filePath = YamlConfigurerUtil.getStrYmlVal("filepath")+dirName+"/";
+        List<ProductImage> images = new ArrayList<>();
+        ProductImage productImage;
         for (int i = 0; i < files.length; i++) {
             MultipartFile file = files[i];
             if (file.isEmpty()) {
-                return "上传第" + (i++) + "个文件失败";
             }
             //保存文件到本地文件，并保存路径到数据库
             DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -75,25 +84,50 @@ public class UpAndDownloadController {
 
             String originalName = files[i].getOriginalFilename();
 
-            String fileName = df.format(calendar.getTime()) + originalName;
-            log.info("文件的文件名为:" + fileName);
+            String newFileName = df.format(calendar.getTime()) + originalName;
+            log.info("文件的文件名为:" + newFileName);
             //todo 入库
-
-
+            productImage = new ProductImage();
+            productImage.setImgUrl(dirName+"/"+newFileName);
+            productImage.setNewImgName(newFileName);
+            productImage.setOriImgName(originalName);
+            productImage.setProId(id);
+            productImage.setStatus(status);
+            images.add(productImage);
             File targetFile = new File(filePath);
             if (!targetFile.exists()) {
                 targetFile.mkdirs();
             }
-            File dest = new File(filePath + fileName);
+            File dest = new File(filePath + newFileName);
             try {
                 file.transferTo(dest);
                 log.info("第" + (i + 1) + "个文件上传成功");
             } catch (IOException e) {
                 log.error(e.toString(), e);
-                return "上传第" + (i++) + "个文件失败";
             }
         }
 
+        screenMapper.insertProductImage(images);
+    }
+    @Autowired
+    ScreenMapper screenMapper;
+
+    @PostMapping("/multiUpload")
+    public String multiUpload(FormBean formBean) {
+//        upload(fengmianFiles);
+//        upload(detailFiles);
+//        upload(nofengmianFiles);
+        //产品入库
+//        String prodctName = formBean.getProdctName();
+//        String productDesc = formBean.getProductDesc();
+        String id = UuidUtil.createID();
+        formBean.setId(id);
+        screenMapper.insertProductScreen(formBean);
+
+        String dirName = formBean.getDirName();
+        upload(formBean.getDetailFiles(), dirName,id,2);
+        upload(formBean.getNofengmianFiles(), dirName,id,1);
+        upload(formBean.getFengmianFiles(), dirName,id,0);
         return "上传成功";
 
     }

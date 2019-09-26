@@ -9,7 +9,7 @@ import lombok.Data;
  **/
 @Data
 public class ProductImage {
-    private Long proId;
+    private String proId;
     private String newImgName;
     private String oriImgName;
     private String imgUrl;

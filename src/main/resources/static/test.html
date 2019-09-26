@@ -7,72 +7,50 @@
     <script src="js/jquery.glide.js" type="text/javascript"></script>
 </head>
 <body>
-<form enctype="multipart/form-data">
-        产品名称：<input type="text" name="prodctName"><br>
-        产品描述：<textarea name="productDesc"></textarea><br>
-        文件夹：<input type="text" name="dirName"><br>
-    <form id="fengmian" enctype="multipart/form-data">
-        封面图：<input name="files" type="file"  multiple>
-    </form>
-     <form id="nofengmian" enctype="multipart/form-data">
-         非封面图： <input name="files"  type="file"  multiple><br>
-     </form>
-    <form id="detail">
-        详情图：<input name="files"  type="file"  multiple><br>
-    </form>
+<form id="form">
+        产品名称：<input id="prodctName" type="text" name="prodctName"><br>
+        产品描述：<textarea id="productDesc" name="productDesc"></textarea><br>
+        文件夹：<input id="dirName" type="text" name="dirName"><br>
 
+        封面图：<input id="fengmian" name="fengmianFiles" type="file"  multiple><br>
 
-    <button>提交</button>
+        非封面图： <input id="nofengmian" name="nofengmianFiles"  type="file"  multiple><br>
 
+        详情图：<input id="detailImg" name="detailFiles"  type="file"  multiple><br>
 
 </form>
+<button>提交</button>
 <script type="text/javascript">
+
     $(function () {
-        var fengmianList=[];
-        var nofengmianList=[];
-        var detail=[];
         $("button").click(function () {
-            alert("00");
-            var formData=new FormData($('#fengmian')[0]);
-            // var formData1=new FormData();
-            // var formData2=new FormData();
-            // formData.append("files", $('#fengmian')[0]);
-           ajaxUpload(formData,1);
-           //  formData1.append("files", $('#nofengmian')[0].files);
-           // ajaxUpload(formData1);
-           //  formData2.append("files", $('#detail')[0].files);
-           //  ajaxUpload(formData2);
-
-        })
-    })
-
-/*
-    $.ajax({
-        url:getUrl("multiUpload"),
-        type:'post',
-        data:formData,
-        processData:false,
-        contentType:false,
-        success:function(data){
-            console.log(data);
-        }
-
-    });*/
-    function ajaxUpload(formData,status) {
-        console.log("ajax jinali");
-        var data;
-        $.ajax({
-            url:getUrl("multiUpload"),
-            type:'post',
-            data:formData,
-            processData:false,
-            contentType:false,
-            success:function(data){
-
+            var prodctName = $("#prodctName").val();
+            var productDesc = $("#productDesc").val();
+            var dirName = $("#dirName").val();
+            var fengmian = $("#fengmian").val();
+            var nofengmian = $("#nofengmian").val();
+            var detailImg = $("#detailImg").val();
+            if(prodctName=="" || productDesc=="" || dirName=="" ||
+                fengmian=="" ||  nofengmian=="" ||  detailImg==""
+            ){
+                alert("有空值");
+                return;
             }
 
-        });
-    }
+            var formData=new FormData($('#form')[0]);
+            console.log($("#fengmian").val()=="");
+            $.ajax({
+                url:getUrl("multiUpload"),
+                type:'post',
+                data:formData,
+                processData:false,
+                contentType:false,
+                success:function(data){
+                    console.log(data);
+                }
+            });
+        })
+    })
 </script>
 </body>
 </html>
