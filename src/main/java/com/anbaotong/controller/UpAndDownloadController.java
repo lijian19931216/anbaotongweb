@@ -70,8 +70,8 @@ public class UpAndDownloadController {
             }
         }
     }
-    private void upload(MultipartFile[] files,String dirName,String id,int status){
-        String filePath = YamlConfigurerUtil.getStrYmlVal("filepath")+dirName+"/";
+    private void upload(MultipartFile[] files,String id,int status){
+        String filePath = YamlConfigurerUtil.getStrYmlVal("filepath");
         List<ProductImage> images = new ArrayList<>();
         ProductImage productImage;
         for (int i = 0; i < files.length; i++) {
@@ -88,7 +88,7 @@ public class UpAndDownloadController {
             log.info("文件的文件名为:" + newFileName);
             //todo 入库
             productImage = new ProductImage();
-            productImage.setImgUrl(dirName+"/"+newFileName);
+            productImage.setImgUrl("image/"+newFileName);
             productImage.setNewImgName(newFileName);
             productImage.setOriImgName(originalName);
             productImage.setProId(id);
@@ -124,10 +124,9 @@ public class UpAndDownloadController {
         formBean.setId(id);
         screenMapper.insertProductScreen(formBean);
 
-        String dirName = formBean.getDirName();
-        upload(formBean.getDetailFiles(), dirName,id,2);
-        upload(formBean.getNofengmianFiles(), dirName,id,1);
-        upload(formBean.getFengmianFiles(), dirName,id,0);
+        upload(formBean.getDetailFiles(),id,2);
+        upload(formBean.getNofengmianFiles(),id,1);
+        upload(formBean.getFengmianFiles(),id,0);
         return "上传成功";
 
     }

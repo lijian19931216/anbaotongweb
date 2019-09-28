@@ -26,7 +26,7 @@
     <resultMap id="detailMap" type="productscreen">
         <id column="id" property="id" jdbcType="VARCHAR" />
         <result column="name" property="name" jdbcType="VARCHAR" />
-        <result column="desc" property="desc" jdbcType="VARCHAR" />
+        <result column="describe" property="desc" jdbcType="VARCHAR" />
         <result column="detail" property="detail" jdbcType="VARCHAR" />
         <collection property="productImages" ofType="productimage">
             <result column="pro_id" property="proId" jdbcType="VARCHAR" />

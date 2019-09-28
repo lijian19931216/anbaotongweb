@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="applicable-device" content="pc,mobile" />
     <title>产品详细页</title>
-
-
+    <script src="../../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../../js/jquery.glide.js" type="text/javascript"></script>
     <link rel="icon" href="../../favicon.ico">
     <link href="../../css/bootstrap.css" rel="stylesheet" />
     <link href="../../css/glide.css" rel="stylesheet" />
@@ -17,13 +18,14 @@
     <link href="../../css/lightgallery.css" rel="stylesheet" />
     <link href="../../css/style.css" rel="stylesheet" />
     <link href="../../css/online.css" rel="stylesheet" />
-    <script src="../../js/jquery.min.js" type="text/javascript"></script>
-    <script src="../../js/bootstrap.js" type="text/javascript"></script>
-    <script src="../../js/jquery.glide.js" type="text/javascript"></script>
+
     <!--[if lt IE 9]>
     <script src="../js/html5shiv.min.js" type="text/javascript"></script>
     <script src="../js/respond.min.js" type="text/javascript"></script>
+    <script src="../../js/picturefill.min.js"></script>
     <![endif]-->
+
+
 </head>
 
 <body>
@@ -53,33 +55,34 @@
                     <div class="detailGlide" style="max-width:600px; margin:0 auto">
                         <div class="slider">
                             <ul id="multiImages" class="slider__wrapper">
-                                <li data-responsive='' data-src='images/DF101_1.png' data-sub-html='' class='slider__item real'><a><img src='images/UHK528/UHK528.png'></a></li>
-                                <li data-responsive='' data-src='images/DF101_2.png' data-sub-html='' class='slider__item real'><a><img src='images/UHK528/UHK528_1.png'></a></li>
-                                <li data-responsive='' data-src='images/DF101_3.png' data-sub-html='' class='slider__item real'><a><img src='images/UHK528/UHK528_2.png'></a></li>
-                            </ul>
+                                <!--<li data-responsive='' data-src='' data-sub-html='' class='slider__item real'><a><img src='/anbaotong/image/2019092710420984_4.jpg'></a></li><li data-responsive='' data-src='' data-sub-html='' class='slider__item real'><a><img src='/anbaotong/image/201909271042091.jpg'></a></li>-->
+                               <!-- <li data-responsive='' data-src='' data-sub-html='' class='slider__item real'><a><img src='../projector/images/CH-TW610/CH-TW610.png'></a></li>
+                                <li data-responsive='' data-src='images/DF101_2.png' data-sub-html='' class='slider__item real'><a><img src='images/CH-TW610/CH-TW610_1.png'></a></li>
+                                <li data-responsive='' data-src='images/DF101_3.png' data-sub-html='' class='slider__item real'><a><img src='images/CH-TW610/CH-TW610_2.png'></a></li>
+                                <li data-responsive='' data-src='' data-sub-html='' class='slider__item real'><a><img src='/anbaotong/image/2019092710420984_4.jpg'></a></li><li data-responsive='' data-src='' data-sub-html='' class='slider__item real'><a><img src='/anbaotong/image/201909271042091.jpg'></a></li>
+                           --> </ul>
                         </div>
+
                         <div id="detailNav">
                         </div>
                     </div>
-                    <script type="text/javascript">
-                        var glide = $('.slider').glide({ navigationImg: true, navigation: "#detailNav" });
-                    </script>
+
                 </div>
 
                 <div class="col-sm-12 col-md-6 pad">
                     <div class="detailTitle">
                         <span class="productTitle">UHK528</span>
                     </div>
-                    <div class="detailParameter" style="line-height:1.8em;">
-                        标准Ultra HD 4K (3,840×2,160) 分辨率，实现高清晰画面和震撼效果<br>
+                    <div id="productDesc" class="detailParameter" style="line-height:1.8em;">
+                        <!--标准Ultra HD 4K (3,840×2,160) 分辨率，实现高清晰画面和震撼效果<br>-->
 
-                        2,100流明亮度，高达 500,000:1 对比度将灰度细节全面展现<br>
+                        <!--2,100流明亮度，高达 500,000:1 对比度将灰度细节全面展现<br>-->
 
-                        采用HDR10高动态处理技术，将真实的电影原色彩再现，实现原汁原味的电影效果<br>
+                        <!--采用HDR10高动态处理技术，将真实的电影原色彩再现，实现原汁原味的电影效果<br>-->
 
-                        REC 709 色彩标准，还原真实电影效果<br>
+                        <!--REC 709 色彩标准，还原真实电影效果<br>-->
 
-                        支持2.35:1好莱坞剧院黄金观影比例，享受原汁原味大片视觉效果
+                        <!--支持2.35:1好莱坞剧院黄金观影比例，享受原汁原味大片视觉效果-->
                     </div>
                 </div>
 
@@ -90,7 +93,7 @@
                     <div id="detailContent" class="detailContent" style="line-height:1.8em;">
 
 
-                        <img src="images/UHK528/UHK528_3.png">
+                        <!--<img src="images/UHK528/UHK528_3.png">-->
 
 
                     </div>
@@ -140,30 +143,33 @@
             url: getUrl("screenDetail"),
             data: {id:GetQueryString("id")},
             type: "POST",
+            // async:false,
             dataType: "json",
             success: function(data) {
                 console.log(data);
-                var html = "";
+                var html =  "";
                 var detailHtml = "";
                 if(data){
                     $(".productTitle").html(data.name); //在html页面id=test的标签里显示html内容
                    var images = data.productImages;
                    if (images){
                    for(var i=0;i<images.length;i++){
-
                         var src=contextpath+images[i].imgUrl;
                         if(images[i].status<2){
-                            html+="<li data-responsive='' data-src='images/DF101_1.png' data-sub-html='' class='slider__item real'><a><img src='"+
-                                src+"'></a></li>";
+                            html+="<li data-responsive='' data-src='' data-sub-html='' class='slider__item real'>"
+                                +"<a><img src='"+src+"'></a></li>"
                         }else{
-                            detailHtml+=" <img src='"+src+">";
+                            detailHtml+=" <img src='"+src+"'>";
                         }
-
                    }
                    }
+                   console.log(html);
                     $("#multiImages").html(html); //在html页面id=test的标签里显示html内容
+                    $("#multiImages").trigger("create");
                     $(".detailParameter").html(data.desc); //在html页面id=test的标签里显示html内容
                     $("#detailContent").html(detailHtml); //在html页面id=test的标签里显示html内容
+                    $('.slider__wrapper').lightGallery({ selector: ".real" });
+                    var glide = $('.slider').glide({ navigationImg: true, navigation: "#detailNav" });
                 }
 
 
@@ -179,10 +185,12 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('.slider__wrapper').lightGallery({ selector: ".real" });
+
     });
 </script>
-
-<script src="../../js/picturefill.min.js"></script>
+<script type="text/javascript">
+    var glide = $('.slider').glide({ navigationImg: true, navigation: "#detailNav" });
+</script>
 
 <script src="../../js/lightgallery.js"></script>
 
