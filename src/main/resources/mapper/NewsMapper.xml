@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anbaotong.mapper.NewsMapper">
+
+    <resultMap id="BaseResultMap" type="new" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="time" property="time" jdbcType="VARCHAR" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+
+    </resultMap>
+<!--新增新闻-->
+    <insert id="addNews" parameterType="new">
+        INSERT INTO `news`(`id`, `title`, `time`,`content`,`type`)
+         VALUES(#{id},#{title},#{time},#{content},#{type})
+    </insert>
+
+    <!--查询新闻列表-->
+    <select id="listNews" resultType="com.anbaotong.bean.New">
+      select id ,title,time,type from news
+       where type=#{type}
+       order by time desc
+    </select>
+    <!--查询新闻详情-->
+    <select id="getNewDetail" resultType="com.anbaotong.bean.New">
+      select * from news where id=#{id}
+    </select>
+
+
+</mapper>

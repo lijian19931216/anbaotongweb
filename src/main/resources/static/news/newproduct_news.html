@@ -9,7 +9,6 @@
     <meta name="applicable-device" content="pc,mobile" />
     <title>新闻中心</title>
 
-
     <link rel="icon" href="../favicon.ico">
     <link href="../css/bootstrap.css" rel="stylesheet" />
     <link href="../css/glide.css" rel="stylesheet" />
@@ -45,7 +44,7 @@
                     <div class="titleBar">
                         <h1>当前位置</h1>
                         <span></span>
-                        <a >新闻中心</a> &gt; <a>公司新闻</a>
+                        <a >新闻中心</a> &gt; <a>新品资讯</a>
                     </div>
                 </div>
 
@@ -87,13 +86,13 @@
         });
         $("#foot").load("../common_foot.html");
         $("#left_news_menu").load("../left_news_menu.html",function () {
-            $("#_2").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").siblings("span").click();
+            $("#_4").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").siblings("span").click();
 
         });
         $(function () {
             $.ajax({
                 url: getUrl("news/newsList"),
-                data: {type:1},
+                data: {type:4},
                 type: "POST",
                 dataType: "json",
                 success: function(data) {
@@ -103,7 +102,7 @@
                     if(newsList){
                         for(var i=0;i<newsList.length;i++){    //遍历data数组
                             var ls = newsList[i];
-                            html+="<li><span>"+(i+1)+"</span><a href='com_newsdetail.html?id="+ls.id+"'>"+ls.title
+                            html+="<li><span>"+(i+1)+"</span><a href='newproduct_newsdetail.html?id="+ls.id+"'>"+ls.title
                                 +"</a><span class='time'>"+ls.time
                                 +"</span></li>";
                         }

@@ -30,11 +30,7 @@
 
 </div>
 
-    
-    <script type="text/javascript">
-        var glide = $('.slider').glide();
-    </script>
-    
+
     <!-- 内容 -->
     <div class="container">
         <div class="row">
@@ -45,7 +41,7 @@
                     <div class="titleBar">
                         <h1>当前位置</h1>
                         <span></span>
-                        <a >新闻中心</a> &gt; <a>公司新闻</a>
+                        <a>新闻中心</a> &gt;<a>公司活动</a>
                     </div>
                 </div>
 
@@ -55,6 +51,7 @@
                         <ul id="newsList">
                         
 
+                            
                         </ul>
                     </div>
 
@@ -62,9 +59,12 @@
 
             </div>
 
-           <div id="left_news_menu">
+            <div id="left_news_menu">
 
-           </div>
+            </div>
+
+
+            </div>
 
         </div>
     </div>
@@ -76,8 +76,6 @@
     <!--客服面板-->
     <!--电脑版-->
 
-
-
     <!--电脑版 end-->
 
 
@@ -87,13 +85,13 @@
         });
         $("#foot").load("../common_foot.html");
         $("#left_news_menu").load("../left_news_menu.html",function () {
-            $("#_2").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").siblings("span").click();
+            $("#_3").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").siblings("span").click();
 
         });
         $(function () {
             $.ajax({
                 url: getUrl("news/newsList"),
-                data: {type:1},
+                data: {type:3},
                 type: "POST",
                 dataType: "json",
                 success: function(data) {
@@ -103,7 +101,7 @@
                     if(newsList){
                         for(var i=0;i<newsList.length;i++){    //遍历data数组
                             var ls = newsList[i];
-                            html+="<li><span>"+(i+1)+"</span><a href='com_newsdetail.html?id="+ls.id+"'>"+ls.title
+                            html+="<li><span>"+(i+1)+"</span><a href='activity_newsdetail.html?id="+ls.id+"'>"+ls.title
                                 +"</a><span class='time'>"+ls.time
                                 +"</span></li>";
                         }
@@ -114,8 +112,6 @@
                 },});
 
         })
-
-
 
         if ($(".banner .slider__wrapper li").length == 0) {
             $(".banner").addClass("emptyBanner");

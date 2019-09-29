@@ -30,11 +30,7 @@
 
 </div>
 
-    
-    <script type="text/javascript">
-        var glide = $('.slider').glide();
-    </script>
-    
+
     <!-- 内容 -->
     <div class="container">
         <div class="row">
@@ -52,46 +48,20 @@
                 <div class="col-sm-12 col-md-12 pad">
                     
                     <div class="nameList" style="margin-top:10px;">
-                        <ul>
+                        <ul id="newsList">
                         
-                            <li>
-                                <span>1</span>
-                                <a href="article_detail.html">网页前端将在网站中占据很大的空间和位置</a>
-                                <span class="time">2017-01-01</span>
-                            </li>
-                            
-                            <li>
-                                <span>2</span>
-                                <a href="article_detail.html">微软欲主动送Windows Phone 7设备给黑客破解</a>
-                                <span class="time">2017-01-01</span>
-                            </li>
-                            
 
                             
                         </ul>
                     </div>
-
-
 
                 </div>
 
             </div>
 
-            <div class="col-xs-12 col-sm-4 col-md-3">
+            <div id="left_news_menu">
 
-                <div class="navigationBox" id="classification">
-                    <div class="titleBar">
-                        <h1>导航栏目</h1>
-                        <span></span>
-                    </div>
-                    <div class="list">
-                        <ul id="firstpane">
-                            <li><a class='' href='company_news.html'>公司新闻</a></li>
-                            <li><a style="font-weight: bold;color:#3477c8" href='hangye_news.html'>行业新闻</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
+            </div>
 
 
             </div>
@@ -106,10 +76,6 @@
     <!--客服面板-->
     <!--电脑版-->
 
-
-
-    <script type="text/javascript" src="../js/online.js"></script>
-
     <!--电脑版 end-->
 
 
@@ -118,7 +84,34 @@
             $("#eighth_li>a").css({"background": "#3477c8","color":"#fff"});
         });
         $("#foot").load("../common_foot.html");
+        $("#left_news_menu").load("../left_news_menu.html",function () {
+            $("#_1").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").siblings("span").click();
 
+        });
+        $(function () {
+            $.ajax({
+                url: getUrl("news/newsList"),
+                data: {type:2},
+                type: "POST",
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    var html = "";
+                    var newsList = data;
+                    if(newsList){
+                        for(var i=0;i<newsList.length;i++){    //遍历data数组
+                            var ls = newsList[i];
+                            html+="<li><span>"+(i+1)+"</span><a href='hangye_newsdetail.html?id="+ls.id+"'>"+ls.title
+                                +"</a><span class='time'>"+ls.time
+                                +"</span></li>";
+                        }
+                        $("#newsList").html(html); //在html页面id=test的标签里显示html内容
+                    }
+
+
+                },});
+
+        })
 
         if ($(".banner .slider__wrapper li").length == 0) {
             $(".banner").addClass("emptyBanner");

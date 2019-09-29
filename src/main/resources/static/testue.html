@@ -15,33 +15,48 @@
 
         UE.Editor.prototype.getActionUrl = function(action){
 
-            if(action == '/upload'){
-                return '/upload';
+            if(action == 'uploadimage'){
+                return '/anbaotong/news/upload';
             }else{
                 return this._bkGetActionUrl.call(this, action);
             }
 
         }
+
     </script>
 </head>
 <body>
-<form >
-    <textarea id="container" name="content" type="text/plain">这里写你的初始化内容</textarea>
+<form id="form">
+    标题：<input type="text" name="title"><br>
+    日期：<input type="date" name="time"><br>
+    类型：<select name="type"><br>
+                <option value="1">公司新闻</option>
+                <option value="2">行业新闻</option>
+                <option value="3">公司活动</option>
+                <option value="4">新品资讯</option>
+          </select>
+    <textarea id="container" name="content" type="text/plain"></textarea>
 </form>
 <button id="btn">提交</button>
+
+
+<!--<form action="news/upload" method="post" enctype="multipart/form-data">
+
+    <input type="file" name="file">
+</form>-->
+<button>获取内容</button>
 </body>
 <script type="text/javascript">
 
     $(function () {
-        $("btn").click(function () {
-            var formdata = new FormData($("form")[0]);
+        $("#btn").click(function () {
             $.ajax({
-                url: getUrl("addNews"),
-                data: formdata,
+                url: getUrl("news/addNews"),
+                data: $('#form').serialize(),
                 type: "POST",
                 dataType: "json",
                 success: function(data) {
-console.log(data);
+                       alert(data.desc);
                 }});
 
         })
