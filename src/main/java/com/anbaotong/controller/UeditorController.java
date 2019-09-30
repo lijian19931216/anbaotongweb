@@ -58,7 +58,7 @@ public class UeditorController {
     @RequestMapping("/upload")
     public UeditorResult upload(MultipartFile file, HttpServletRequest request){
         Map<String, Object> params = new HashMap<>();
-        String filePath = YamlConfigurerUtil.getStrYmlVal("filepath");
+        String filePath = YamlConfigurerUtil.getStrYmlVal("imagepath");
             if (file.isEmpty()) {
             }
             //保存文件到本地文件，并保存路径到数据库

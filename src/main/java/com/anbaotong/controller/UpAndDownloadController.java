@@ -1,17 +1,18 @@
 package com.anbaotong.controller;
 
+import com.anbaotong.bean.FileBean;
 import com.anbaotong.bean.FormBean;
 import com.anbaotong.bean.ProductImage;
 import com.anbaotong.mapper.ScreenMapper;
-import com.anbaotong.util.FileUtil;
+import com.anbaotong.service.FileService;
 import com.anbaotong.util.UuidUtil;
 import com.anbaotong.util.YamlConfigurerUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,18 +37,7 @@ public class UpAndDownloadController {
 
 
 
-    /* @ResponseBody
-            @RequestMapping("/fileUpload")
-            public JSONObject fileUpload1(@RequestParam("file") MultipartFile[] files, HttpServletRequest request) throws Exception{
-                String serverName = "文件上传";
-                fileUpload(files,request);
-                Map<String,Object> resMap = new HashMap<String,Object>();
-                //0:操作成功
-                resMap.put("code", "-1");
-                resMap.put("desc","");
-                return null;
-            }*/
-    @RequestMapping("/product1")
+   /* @RequestMapping("/product1")
     public void fileUpload(@RequestParam("file")MultipartFile[] files, HttpServletRequest request) throws Exception {
         //文件命名
         //保存时的文件名
@@ -69,14 +59,15 @@ public class UpAndDownloadController {
 //                throw new ZDYException(ErrorCode.ERR_FILE_UPLOAD_FAIL);
             }
         }
-    }
+    }*/
     private void upload(MultipartFile[] files,String id,int status){
-        String filePath = YamlConfigurerUtil.getStrYmlVal("filepath");
+        String filePath = YamlConfigurerUtil.getStrYmlVal("imagepath");
         List<ProductImage> images = new ArrayList<>();
         ProductImage productImage;
         for (int i = 0; i < files.length; i++) {
             MultipartFile file = files[i];
             if (file.isEmpty()) {
+                continue;
             }
             //保存文件到本地文件，并保存路径到数据库
             DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -136,20 +127,79 @@ public class UpAndDownloadController {
      * @throws Exception
      */
     @RequestMapping(value = "/downloadFile")
-    public void downLoad(HttpServletRequest request,String fileName, HttpServletResponse response) throws Exception {
-
+    public void downLoad(HttpServletRequest request,FileBean fileBean, HttpServletResponse response) throws Exception {
+        FileBean fileDetail = fileService.getFileById(fileBean);
         try {
-            File file = new File(YamlConfigurerUtil.getStrYmlVal("filepath") + fileName);
+            File file = new File(fileDetail.getSavePath());
             InputStream inputStream = new FileInputStream(file);
             OutputStream outputStream = response.getOutputStream();
             response.setCharacterEncoding(request.getCharacterEncoding());
             response.setHeader("Content-Disposition",
-                    "attachment; filename="+ URLEncoder.encode(fileName , "UTF-8"));
+                    "attachment; filename="+ URLEncoder.encode(fileDetail.getOriName() , "UTF-8"));
             response.setContentType("application/octet-stream");
             IOUtils.copy(inputStream, outputStream);
             response.flushBuffer();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 上传下载文件
+     * @param files
+     * @param id
+     * @param status
+     */
+    @Value("${filepath}")
+    private String filepath;
+
+    @Autowired
+    private FileService fileService;
+    @RequestMapping("/uploadFile")
+    public String uploadFile(MultipartFile[] files){
+        List<FileBean> fileList = new ArrayList<>();
+        FileBean fileBean;
+        for (MultipartFile file : files) {
+            if (file.isEmpty()) {
+                continue;
+            }
+            //保存文件到本地文件，并保存路径到数据库
+            DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+            Calendar calendar = Calendar.getInstance();
+
+            String originalName = file.getOriginalFilename();
+
+            String newFileName = df.format(calendar.getTime()) + originalName;
+            log.info("文件的文件名为:" + newFileName);
+            fileBean = new FileBean();
+            fileBean.setId(UuidUtil.createID());
+            fileBean.setOriName(originalName);
+            fileBean.setSavePath(filepath+newFileName);
+            fileBean.setNewName(newFileName);
+            fileList.add(fileBean);
+            File targetFile = new File(filepath);
+            if (!targetFile.exists()) {
+                targetFile.mkdirs();
+            }
+            File dest = new File(filepath + newFileName);
+            try {
+                file.transferTo(dest);
+                log.info(originalName+ "文件上传成功");
+            } catch (IOException e) {
+                log.error(e.toString(), e);
+            }
+        }
+
+        fileService.addFile(fileList);
+        return "上传成功";
+    }
+
+    /**
+     * 获取文件列表
+     * @return
+     */
+    @RequestMapping("/getFileList")
+    public List<FileBean> getFileList(){
+        return fileService.getFileList();
     }
 }

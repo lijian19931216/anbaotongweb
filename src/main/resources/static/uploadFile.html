@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .file-list{
+            padding: 20px;
+            background: lightblue;
+            list-style-type: none;
+        }
+        .file-list img{
+            max-width: 70px;
+            vertical-align: middle;
+        }
+        .file-list .file-item{margin-bottom: 10px}
+        .file-list .file-item .file-name{margin-left: 20px}
+        .file-list .file-item .file-del{
+            color: red;
+            margin-left: 200px;}
+    </style>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/jquery.glide.js" type="text/javascript"></script>
+</head>
+<body>
+<form >
+    <div>
+        <input type="file" id="choose-file" multiple>
+        <a href="javascript:;" id="upload">上传</a>
+    </div>
+    <ul class="file-list">
+    </ul>
+</form>
+<script type="text/javascript">
+    var $button = $('#upload'),
+        //选择文件按钮
+        $file = $("#choose-file"),
+        //回显的列表
+        $list = $('.file-list'),
+        //选择要上传的所有文件
+        fileList = [],
+        sendList = [];
+    //当前选择上传的文件
+    var curFile ;
+    $file.on('change',function(){         //原生的文件对象，相当于$file.get(0).files[0];
+        curFile = this.files;         //将FileList对象变成数组
+        fileList = fileList.concat(Array.from(curFile));
+        for(var i=0,len = curFile.length;i < len;i++){
+            reviewFile(curFile[i])
+        }
+
+    })
+    function reviewFile(file){         //实例化fileReader,
+        var  fd = new FileReader();         //获取当前选择文件的类型
+        var fileType = file.type;         //调它的readAsDataURL并把原生File对象传给它，
+        fd.readAsDataURL(file);//base64         //监听它的onload事件，load完读取的结果就在它的result属性里了
+        fd.onload = function(){
+
+            if(/^image\/[jpeg|png|jpg|gif]/.test(fileType)){
+                $list.append('<li class="file-item"><img src="'+this.result+'" alt=""><span class="file-name">'+file.name+'</span><span class="file-del">删除</span></li>')
+            }else{
+                $list.append('<li class="file-item"><span class="file-name">'+file.name+'</span><span class="file-del">删除</span></li>')
+            }
+        }
+    }
+    $(".file-list").on('click','.file-del',function(){
+        var $parent = $(this).parent();
+        var index = $parent.index();
+        fileList.splice(index,1);
+        $parent.remove()
+    });
+    $button.on('click',function(){
+
+        if(fileList.length>0){
+            console.log(fileList);
+
+            for(var i=0,len = fileList.length;i < len;i++){
+                var formData = new FormData();
+                formData.append('file',fileList[i]);
+                console.log(formData);
+                $.ajax({
+                    url:getUrl("uploadFile"),
+                    type:'post',
+                    data:formData,
+                    processData:false,
+                    contentType:false,
+                    success:function(data){
+                       console.log(data);
+                        }
+
+                });
+            }
+
+        }else{
+            alert("请选择文件！")
+        }
+        return false;
+
+    })
+
+</script>
+
+</body>
+</html>

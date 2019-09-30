@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anbaotong.mapper.FileMapper">
+
+    <resultMap id="BaseResultMap" type="filebean" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="ori_name" property="oriName" jdbcType="VARCHAR" />
+        <result column="time" property="time" jdbcType="VARCHAR" />
+        <result column="new_name" property="newName" jdbcType="VARCHAR" />
+        <result column="save_path" property="savePath" jdbcType="VARCHAR" />
+
+    </resultMap>
+<!--新增文件-->
+
+    <insert id="addFile" parameterType="java.util.List">
+        insert into `file`(`id`, `ori_name`, `new_name`, `save_path`)
+        values
+        <foreach collection="list" item="file" separator=",">
+            (#{file.id},#{file.oriName} ,#{file.newName} ,#{file.savePath})
+        </foreach>
+    </insert>
+
+    <!--查询文件列表-->
+    <select id="getFileList" resultType="filebean">
+      select id ,ori_name,time,new_name,save_path from file
+       order by time desc
+    </select>
+    <!--根据id查询-->
+    <select id="getFileById" resultType="com.anbaotong.bean.FileBean" parameterType="filebean">
+select id ,ori_name,time,new_name,save_path from file
+where id=#{id}
+    </select>
+
+
+</mapper>

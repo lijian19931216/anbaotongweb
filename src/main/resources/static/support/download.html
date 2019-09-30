@@ -45,14 +45,13 @@
                 </div>
 
                 <div class="col-sm-12 col-md-12 pad">
-                    <h4>问题1</h4>
-
-                    <h4>问题1</h4>
-
+                    <div class="nameList" style="margin-top:10px;">
+                        <ul id="fileList">
 
 
-
-                    <!--
+                        </ul>
+                    </div>
+ <!--
 
                                         <div class='pageBar'><div class='pageList'><a class='selected'>1</a></div></div>
                     -->
@@ -69,16 +68,8 @@
         </div>
     </div>
 <div id="foot"></div>
-    
-
-    
-    <script type="text/javascript" src="../js/common.js"></script>
-    
-
-
-
-
-    <script type="text/javascript">
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript">
         $("#head").load("../common.html",function () {
             $("#sixth_li>a").css({"background": "#3477c8","color":"#fff"});
         });
@@ -86,7 +77,30 @@
         $("#left_support_menu").load("../left_support_menu.html",function () {
             $("#_1").css({"font-weight": "bold","color":"#3477c8"});
         });
+        $(function () {
+            $.ajax({
+                url: getUrl("getFileList"),
+                data: {},
+                type: "POST",
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    var html = "";
+                    var fileList = data;
+                    if(fileList){
+                        for(var i=0;i<fileList.length;i++){    //遍历data数组
+                            var ls = fileList[i];
+                            html+="<li><span>"+(i+1)+"</span><a href='downloadFile?id="+ls.id+"'>"+ls.oriName
+                                +"</a><span class='time'>"+ls.time
+                                +"</span></li>";
+                        }
+                        $("#fileList").html(html); //在html页面id=test的标签里显示html内容
+                    }
 
+
+                }});
+
+        });
 
         if ($(".banner .slider__wrapper li").length == 0) {
             $(".banner").addClass("emptyBanner");

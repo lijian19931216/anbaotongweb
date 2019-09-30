@@ -21,4 +21,5 @@ logging:
     com:
       anbaotong:
         mapper : debug
-filepath: F:/image/
+imagepath: F:/image/
+filepath: F:/file/
