@@ -16,17 +16,17 @@
         insert into `file`(`id`, `ori_name`, `new_name`, `save_path`)
         values
         <foreach collection="list" item="file" separator=",">
-            (#{file.id},#{file.oriName} ,#{file.newName} ,#{file.savePath})
+            (#{file.id},#{file.oriName},#{file.newName},#{file.savePath})
         </foreach>
     </insert>
 
     <!--查询文件列表-->
-    <select id="getFileList" resultType="filebean">
-      select id ,ori_name,time,new_name,save_path from file
+    <select id="getFileList" resultMap="BaseResultMap">
+      select id ,ori_name, date_format(time,'%Y-%m-%d') time,new_name,save_path from file
        order by time desc
     </select>
     <!--根据id查询-->
-    <select id="getFileById" resultType="com.anbaotong.bean.FileBean" parameterType="filebean">
+    <select id="getFileById" resultMap="BaseResultMap" parameterType="filebean">
 select id ,ori_name,time,new_name,save_path from file
 where id=#{id}
     </select>

@@ -103,6 +103,12 @@ public class UpAndDownloadController {
     @Autowired
     ScreenMapper screenMapper;
 
+    /**
+     * 屏幕文件上传
+     * @param formBean
+     * @return
+     */
+
     @PostMapping("/multiUpload")
     public String multiUpload(FormBean formBean) {
 //        upload(fengmianFiles);
@@ -159,7 +165,8 @@ public class UpAndDownloadController {
     public String uploadFile(MultipartFile[] files){
         List<FileBean> fileList = new ArrayList<>();
         FileBean fileBean;
-        for (MultipartFile file : files) {
+        for (int i = 0; i < files.length; i++) {
+            MultipartFile file = files[i];
             if (file.isEmpty()) {
                 continue;
             }
@@ -167,7 +174,7 @@ public class UpAndDownloadController {
             DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
             Calendar calendar = Calendar.getInstance();
 
-            String originalName = file.getOriginalFilename();
+            String originalName = files[i].getOriginalFilename();
 
             String newFileName = df.format(calendar.getTime()) + originalName;
             log.info("文件的文件名为:" + newFileName);

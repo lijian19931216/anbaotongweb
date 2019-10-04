@@ -90,7 +90,7 @@
                     if(fileList){
                         for(var i=0;i<fileList.length;i++){    //遍历data数组
                             var ls = fileList[i];
-                            html+="<li><span>"+(i+1)+"</span><a href='downloadFile?id="+ls.id+"'>"+ls.oriName
+                            html+="<li><span>"+(i+1)+"</span><a href='"+contextpath+"downloadFile?id="+ls.id+"'>"+ls.oriName
                                 +"</a><span class='time'>"+ls.time
                                 +"</span></li>";
                         }

@@ -25,7 +25,7 @@
 <body>
 <form >
     <div>
-        <input type="file" id="choose-file" multiple>
+        <input name="files" type="file" id="choose-file" multiple>
         <a href="javascript:;" id="upload">上传</a>
     </div>
     <ul class="file-list">
@@ -70,26 +70,20 @@
         $parent.remove()
     });
     $button.on('click',function(){
-
         if(fileList.length>0){
             console.log(fileList);
+            var formData=new FormData($('form')[0]);
+            $.ajax({
+                url:getUrl("uploadFile"),
+                type:'post',
+                data:formData,
+                processData:false,
+                contentType:false,
+                success:function(data){
+                    alert(data);
+                }
 
-            for(var i=0,len = fileList.length;i < len;i++){
-                var formData = new FormData();
-                formData.append('file',fileList[i]);
-                console.log(formData);
-                $.ajax({
-                    url:getUrl("uploadFile"),
-                    type:'post',
-                    data:formData,
-                    processData:false,
-                    contentType:false,
-                    success:function(data){
-                       console.log(data);
-                        }
-
-                });
-            }
+            });
 
         }else{
             alert("请选择文件！")

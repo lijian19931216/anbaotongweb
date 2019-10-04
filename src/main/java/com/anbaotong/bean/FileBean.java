@@ -2,8 +2,6 @@ package com.anbaotong.bean;
 
 import lombok.Data;
 
-import java.util.Date;
-
 /**
  * @description:
  * @author: lijian
@@ -15,5 +13,5 @@ public class FileBean {
     private String oriName;
     private String newName;
     private String savePath;
-    private Date time;
+    private String time;
 }
