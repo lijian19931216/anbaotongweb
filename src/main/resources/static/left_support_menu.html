@@ -7,10 +7,20 @@
         </div>
         <div class="list">
             <ul id="firstpane">
-                <li><a id="_1" class='' href='/anbaotong/support/download.html'>相关下载</a></li>
-                <li><a id="_2" class='' href='/anbaotong/support/question_ans.html'>技术支持</a></li>
-                <li><a id="_3" class='' href='/anbaotong/support/knowledge.html'>知识库</a></li>
+
+                <li><a id="_1" class='' href='/anbaotong/support/download.html'>下载中心</a></li>
+                <li><a id="_2" class='' href='/anbaotong/support/question_ans.html'>常见问题</a><span>+</span>
+                    <ul>
+                        <li><a id="_5" class='' href='/anbaotong/support/smart_home/q_and_a.html'>智能家居</a></li>
+                        <li><a id="_6" class='' href='/anbaotong/support/smart_lock/q_and_a.html'>智能门锁</a></li>
+                        <li><a id="_7" class='' href='/anbaotong/support/net_visit/q_and_a.html'>网络访问</a></li>
+                        <li><a id="_8" class='' href='/anbaotong/support/net_yingpan_video/q_and_a.html'>网络硬盘录像机</a></li>
+                        <li><a id="_9" class='' href='/anbaotong/support/net_shexiang/q_and_a.html'>网络摄像机</a></li>
+                    </ul>
+                </li>
+                <li><a id="_3" class='' href='/anbaotong/support/knowledge.html'>维护知识</a></li>
                 <li><a id="_4" class='' href='/anbaotong/support/aftersale_service.html'>售后服务</a></li>
+
             </ul>
         </div>
     </div>
@@ -18,3 +28,17 @@
 
 
 </div>
+<script type="text/javascript">
+
+    $("#firstpane span").click(function(){
+        var spanatt = $(this).next("ul").css('display');
+        if (spanatt == "block"){
+            var spantext = "+";
+            // $(this).prev().removeClass("left_active");
+        }else{
+            var spantext = "-";
+            //$(this).prev().addClass("left_active");
+        }
+        $(this).html(spantext).addClass("current").next("ul").slideToggle(300).siblings("ul");
+    });
+</script>

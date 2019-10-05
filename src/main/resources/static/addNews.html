@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>添加新闻</title>
     <script src="utf8-jsp/ueditor.config.js"></script>
     <script src="utf8-jsp/ueditor.all.min.js"></script>
     <script src="utf8-jsp/lang/zh-cn/zh-cn.js"></script>
@@ -29,12 +29,13 @@
 <form id="form">
     标题：<input type="text" name="title"><br>
     日期：<input type="date" name="time"><br>
-    类型：<select name="type"><br>
+    类型：<select name="type">
                 <option value="1">公司新闻</option>
                 <option value="2">行业新闻</option>
                 <option value="3">公司活动</option>
                 <option value="4">新品资讯</option>
-          </select>
+          </select><br>
+    新闻内容：<br>
     <textarea id="container" name="content" type="text/plain"></textarea>
 </form>
 <button id="btn">提交</button>

@@ -30,7 +30,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/news")
 @Slf4j
-public class UeditorController {
+public class NewsController {
     @Autowired
     private NewService newService;
 

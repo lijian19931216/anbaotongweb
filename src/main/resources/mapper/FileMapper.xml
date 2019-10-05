@@ -22,8 +22,8 @@
 
     <!--查询文件列表-->
     <select id="getFileList" resultMap="BaseResultMap">
-      select id ,ori_name, date_format(time,'%Y-%m-%d') time,new_name,save_path from file
-       order by time desc
+      select id ,ori_name, date_format(time,'%Y-%m-%d') time,new_name,save_path from file f
+       order by f.time desc
     </select>
     <!--根据id查询-->
     <select id="getFileById" resultMap="BaseResultMap" parameterType="filebean">

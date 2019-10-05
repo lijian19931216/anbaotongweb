@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anbaotong.mapper.AnliMapper">
+
+    <resultMap id="BaseResultMap" type="anlibean" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="INTEGER" />
+        <result column="content" property="content" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, title, type, content, image
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select 
+        <include refid="Base_Column_List" />
+        from anli
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--插入案例表-->
+    <insert id="insertAnli" parameterType="anlibean" >
+        insert into anli (id, title, type, 
+            content)
+        values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+            #{content,jdbcType=LONGVARCHAR})
+    </insert>
+    <!--插入图片表-->
+    <insert id="insertImage" parameterType="imagebean" >
+        insert into image (foreign_id, ori_img_name, new_img_name,
+            img_url, status, href
+            )
+        values (#{foreignId,jdbcType=VARCHAR}, #{oriImgName,jdbcType=VARCHAR}, #{newImgName,jdbcType=VARCHAR},
+            #{imgUrl,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{href,jdbcType=VARCHAR}
+            )
+    </insert>
+    <!--查询案例列表-->
+    <select id="selectAnliListByType" resultType="map" parameterType="anlibean" >
+       select a.title,i.img_url imgUrl,a.id
+       from anli a left join image i on a.id=i.foreign_id
+        where a.type = #{type}
+    </select>
+
+    <!--查询案例详情-->
+    <select id="getAnliDetail" resultMap="BaseResultMap" parameterType="java.lang.String" >
+       select id, title, type, content
+       from anli
+        where id = #{id}
+    </select>
+
+
+
+</mapper>

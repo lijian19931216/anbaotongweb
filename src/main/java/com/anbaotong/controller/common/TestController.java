@@ -1,4 +1,4 @@
-package com.anbaotong.controller;
+package com.anbaotong.controller.common;
 
 import com.anbaotong.bean.Product;
 import com.anbaotong.mapper.TestMapper;

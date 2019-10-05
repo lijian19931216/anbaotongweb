@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anbaotong.mapper.AnliMapper" >
+
+    <!--<resultMap id="BaseResultMap" type="imagebean" >
+        <result column="foreign_id" property="foreignId" jdbcType="VARCHAR" />
+        <result column="ori_img_name" property="oriImgName" jdbcType="VARCHAR" />
+        <result column="new_img_name" property="newImgName" jdbcType="VARCHAR" />
+        <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="href" property="href" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <insert id="insert" parameterType="org.wcy.gen.model.Image" >
+        insert into image (forein_id, ori_img_name, new_img_name, 
+            img_url, status, href
+            )
+        values (#{foreinId,jdbcType=VARCHAR}, #{oriImgName,jdbcType=VARCHAR}, #{newImgName,jdbcType=VARCHAR}, 
+            #{imgUrl,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{href,jdbcType=VARCHAR}
+            )
+    </insert>
+
+    <insert id="insertSelective" parameterType="org.wcy.gen.model.Image" >
+        insert into image
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="foreinId != null" >
+                forein_id,
+            </if>
+            <if test="oriImgName != null" >
+                ori_img_name,
+            </if>
+            <if test="newImgName != null" >
+                new_img_name,
+            </if>
+            <if test="imgUrl != null" >
+                img_url,
+            </if>
+            <if test="status != null" >
+                status,
+            </if>
+            <if test="href != null" >
+                href,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="foreinId != null" >
+                #{foreinId,jdbcType=VARCHAR},
+            </if>
+            <if test="oriImgName != null" >
+                #{oriImgName,jdbcType=VARCHAR},
+            </if>
+            <if test="newImgName != null" >
+                #{newImgName,jdbcType=VARCHAR},
+            </if>
+            <if test="imgUrl != null" >
+                #{imgUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="href != null" >
+                #{href,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>-->
+</mapper>
