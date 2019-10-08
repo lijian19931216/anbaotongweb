@@ -1,0 +1,26 @@
+#server:
+##  servlet:
+##    context-path: /anbaotong
+#  port: 88
+spring:
+  datasource:
+    username: abtweb
+    password: Anbaotong20190424
+    url: jdbc:mysql://rm-8vb8oqp75c8s87l58fo.mysql.zhangbei.rds.aliyuncs.com:3306/web?useUnicode=true&characterEncoding=utf8&allowMutiQueries=true
+    driver-class-name: com.mysql.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+mybatis:
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+  type-aliases-package: com.anbaotong.bean
+
+#showSql
+logging:
+  level:
+    com:
+      anbaotong:
+        mapper : debug
+imagepath: /anbaotongweb/image/
+filepath: /anbaotongweb/file/

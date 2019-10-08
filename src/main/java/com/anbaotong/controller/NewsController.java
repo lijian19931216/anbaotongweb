@@ -5,9 +5,9 @@ import com.anbaotong.bean.Result;
 import com.anbaotong.bean.UeditorResult;
 import com.anbaotong.service.NewService;
 import com.anbaotong.util.UuidUtil;
-import com.anbaotong.util.YamlConfigurerUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -55,10 +55,13 @@ public class NewsController {
      * @param request
      * @return
      */
+    @Value("${imagepath}")
+    private String filepath;
+
     @RequestMapping("/upload")
     public UeditorResult upload(MultipartFile file, HttpServletRequest request){
         Map<String, Object> params = new HashMap<>();
-        String filePath = YamlConfigurerUtil.getStrYmlVal("imagepath");
+        String filePath = filepath;
             if (file.isEmpty()) {
             }
             //保存文件到本地文件，并保存路径到数据库

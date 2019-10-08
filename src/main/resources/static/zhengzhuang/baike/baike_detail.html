@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="applicable-device" content="pc,mobile" />
-    <title>精品案例详细页</title>
+    <title>装修百科详细页</title>
 
 
     <link rel="icon" href="../../favicon.ico">
@@ -40,7 +40,7 @@
                 <div class="titleBar">
                     <h1>当前位置</h1>
                     <span></span>
-                    <a >整装云</a>&gt;<a>家装案例</a>&gt;<a>精品案例</a>
+                    <a >整装云</a>&gt;<a>家装攻略</a>&gt;<a>装修百科</a>
                 </div>
             </div>
 
@@ -81,7 +81,7 @@
 <script type="text/javascript">
     $(function () {
         $.ajax({
-            url: getUrl("anli/anliDetail"),
+            url: getUrl("baike/baikeDetail"),
             data: {id:GetQueryString("id")},
             type: "POST",
             dataType: "json",
@@ -89,7 +89,7 @@
                 console.log(data);
                 if(data){
                     $("#title").html(data.title); //在html页面id=test的标签里显示html内容
-                    $("#time").html(data.time); //在html页面id=test的标签里显示html内容
+                    // $("#time").html(data.time); //在html页面id=test的标签里显示html内容
                     $("#content").html(data.content); //在html页面id=test的标签里显示html内容
                 }
 
@@ -102,7 +102,7 @@
     });
     $("#foot").load("../../common_foot.html");
     $("#left_cloud_menu").load("../../left_cloud_menu.html",function () {
-        $("#_3").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").siblings("span").click();
+        $("#_9").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").siblings("span").click();
 
     });
     if ($(".banner .slider__wrapper li").length == 0) {
