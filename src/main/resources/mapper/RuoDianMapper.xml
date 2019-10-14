@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anbaotong.mapper.RuoDianMapper">
+
+    <resultMap id="BaseResultMap" type="ruoDianbean" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="INTEGER" />
+        <result column="content" property="content" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, title, type, content, image
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select 
+        <include refid="Base_Column_List" />
+        from ruoDian
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--插入案例表-->
+    <insert id="insertRuoDian" parameterType="ruoDianbean" >
+        insert into ruoDian (id, title, type, 
+            content)
+        values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+            #{content,jdbcType=LONGVARCHAR})
+    </insert>
+    <!--插入图片表-->
+    <insert id="insertImage" parameterType="imagebean" >
+        insert into image (foreign_id, ori_img_name, new_img_name,
+            img_url, status, href
+            )
+        values (#{foreignId,jdbcType=VARCHAR}, #{oriImgName,jdbcType=VARCHAR}, #{newImgName,jdbcType=VARCHAR},
+            #{imgUrl,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{href,jdbcType=VARCHAR}
+            )
+    </insert>
+    <!--查询案例列表-->
+    <select id="selectRuoDianListByType" resultType="map" parameterType="ruoDianbean" >
+       select a.title,i.img_url imgUrl,a.id
+       from ruoDian a left join image i on a.id=i.foreign_id
+        where a.type = #{type}
+    </select>
+
+    <!--查询案例详情-->
+    <select id="getRuoDianDetail" resultMap="BaseResultMap" parameterType="java.lang.String" >
+       select id, title, type, content
+       from ruoDian
+        where id = #{id}
+    </select>
+    <!--查类型-->
+    <select id="getRuoDianType" resultType="map" >
+        select * from ruodian_type
+    </select>
+
+
+
+</mapper>

@@ -45,17 +45,13 @@
                 </div>
 
                 <div class="col-sm-12 col-md-12 pad">
-                    
-                    <div class="detailContent" style="line-height:1.8em">
-                    <p style="text-indent: 2em;">
-                       招贤纳士
 
-                    </p>
-                          <img src="../images/20170307100117_5871.jpg" alt="" style="width:100%" />
+
+                    <div id="content" class="detailContent">
+
+
 
                     </div>
-                
-                    <div style="height:15px"></div>
                     
                 </div>
 
@@ -72,6 +68,24 @@
     
 
     <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                url: getUrl("busi/busiDetail"),
+                data: {id:2},
+                type: "POST",
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    if(data){
+                        $("#title").html(data.title); //在html页面id=test的标签里显示html内容
+                        // $("#time").html(data.time); //在html页面id=test的标签里显示html内容
+                        $("#content").html(data.content); //在html页面id=test的标签里显示html内容
+                    }
+
+
+                },});
+
+        })
         $("#head").load("../common.html",function () {
             $("#seventh_li>a").css({"background": "#3477c8","color":"#fff"});
         });

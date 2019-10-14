@@ -27,9 +27,16 @@
 
 
 
-</div>
-<script type="text/javascript">
+    <div id="message">
 
+    </div>
+
+
+
+</div>
+
+<script type="text/javascript">
+    $("#message").load("/anbaotong/left_form.html");
     $("#firstpane span").click(function(){
         var spanatt = $(this).next("ul").css('display');
         if (spanatt == "block"){

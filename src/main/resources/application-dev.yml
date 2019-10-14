@@ -7,7 +7,7 @@ spring:
     username: abtweb
     password: Anbaotong20190424
     url: jdbc:mysql://rm-8vb8oqp75c8s87l58fo.mysql.zhangbei.rds.aliyuncs.com:3306/web?useUnicode=true&characterEncoding=utf8&allowMutiQueries=true
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   servlet:
     multipart:
       max-file-size: 10MB

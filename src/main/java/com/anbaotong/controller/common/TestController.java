@@ -1,11 +1,11 @@
 package com.anbaotong.controller.common;
 
-import com.anbaotong.bean.Product;
 import com.anbaotong.mapper.TestMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,9 +36,9 @@ public class TestController {
     @Autowired
     TestMapper mapper;
     @RequestMapping("/product")
-    public Product test1(){
+    public void test1(HttpServletRequest request){
 
-        return mapper.selectProduct() ;
+        System.out.println(request);
     }
 
 }

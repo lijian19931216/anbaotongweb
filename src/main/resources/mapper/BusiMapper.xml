@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anbaotong.mapper.BusiMapper">
+
+    <resultMap id="BaseResultMap" type="busibean" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="content" property="content" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, title, content
+    </sql>
+
+
+
+    <!--插入案例表-->
+    <insert id="addBusi" parameterType="busibean" >
+        insert into business (title,content)
+        values ( #{title,jdbcType=VARCHAR},
+            #{content,jdbcType=LONGVARCHAR})
+    </insert>
+
+
+    <!--查询案例详情-->
+    <select id="getBusiDetail" resultMap="BaseResultMap" parameterType="int" >
+       select id, title,  content
+       from business
+        where id = #{id}
+    </select>
+
+
+
+</mapper>

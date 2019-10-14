@@ -6,7 +6,6 @@ import com.anbaotong.bean.ProductImage;
 import com.anbaotong.mapper.ScreenMapper;
 import com.anbaotong.service.FileService;
 import com.anbaotong.util.UuidUtil;
-import com.anbaotong.util.YamlConfigurerUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,8 +59,10 @@ public class UpAndDownloadController {
             }
         }
     }*/
+   @Value("${imagepath}")
+   private String imagepath;
     private void upload(MultipartFile[] files,String id,int status){
-        String filePath = YamlConfigurerUtil.getStrYmlVal("imagepath");
+        String filePath = imagepath;
         List<ProductImage> images = new ArrayList<>();
         ProductImage productImage;
         for (int i = 0; i < files.length; i++) {
