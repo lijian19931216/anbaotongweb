@@ -101,7 +101,7 @@
     });
     $("#foot").load("../../../common_foot.html");
     $("#left_product_menu").load("../../../left_product_menu.html",function () {
-        $("#_8").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").siblings("span").click();;
+        $("#_8").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").prev("span").click();;
     });
     if ($(".banner .slider__wrapper li").length == 0) {
         $(".banner").addClass("emptyBanner");

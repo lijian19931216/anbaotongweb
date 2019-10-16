@@ -90,7 +90,7 @@
         });
         $("#foot").load("../../common_foot.html");
         $("#left_cloud_menu").load("../../left_cloud_menu.html",function () {
-            $("#_9").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").siblings("span").click();
+            $("#_9").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").prev("span").click();
         });
         $(function () {
             $.ajax({
@@ -108,7 +108,7 @@
                             html+=  "<li class='col-xs-12 col-sm-6 col-md-12'><a href='baike_detail.html?id="+ls.id+"'>"+
                                 "<div class='img' style='background-image: url("+contextpath+ls.imgUrl+")'></div>"+
                                 "<div style='margin-left: 200px;' class='txt'><span style='font-size: 20px' class='title'>"+ls.title+
-                                "</span><br><p style='color: black;line-height: 20px'>"+
+                                "</span><br><p style='color: black;line-height: 20px;font-size: 13px;'>"+
                                 ls.descInfo+"</p></div></a></li>";
                         }
                         $("#baikeList").html(html); //在html页面id=test的标签里显示html内容

@@ -111,7 +111,7 @@
     });
     $("#foot").load("../common_foot.html");
     $("#left_news_menu").load("../left_news_menu.html",function () {
-        $("#_2").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").siblings("span").click();
+        $("#_2").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").prev("span").click();
 
     });
     if ($(".banner .slider__wrapper li").length == 0) {
