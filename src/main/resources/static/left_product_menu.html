@@ -49,12 +49,13 @@
         var spanatt = $(this).next("ul").css('display');
         if (spanatt == "block"){
             var spantext = "+";
-            // $(this).prev().removeClass("left_active");
+            $(this).html(spantext).addClass("current").next("ul").hide();
         }else{
             var spantext = "-";
             //$(this).prev().addClass("left_active");
+            $(this).html(spantext).addClass("current").next("ul").show();
         }
-        $(this).html(spantext).addClass("current").next("ul").slideToggle(300).siblings("ul");
+        // $(this).html(spantext).addClass("current").next("ul").slideToggle(300).siblings("ul");
     });
 
 </script>
