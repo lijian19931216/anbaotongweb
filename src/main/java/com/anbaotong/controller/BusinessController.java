@@ -29,6 +29,7 @@ public class BusinessController {
 
     @RequestMapping("/busiDetail")
     public BusiBean getBusiDetail(BusiBean busiBean) {
+        log.info(busiBean+"");
         return busiService.getBusiDetail(busiBean);
     }
 

@@ -24,9 +24,9 @@
 
     <!--查询案例详情-->
     <select id="getBusiDetail" resultMap="BaseResultMap" parameterType="int" >
-       select id, title,  content
+       select id, title,  content,type
        from business
-        where id = #{id}
+        where type = #{type}
     </select>
 
 

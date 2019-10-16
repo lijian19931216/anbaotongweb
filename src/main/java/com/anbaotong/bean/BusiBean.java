@@ -22,5 +22,7 @@ public class BusiBean {
 
     private String content;
 
+    private int type;
+
 
 }
