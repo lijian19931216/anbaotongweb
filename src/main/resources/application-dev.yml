@@ -4,9 +4,9 @@ server:
   port: 8080
 spring:
   datasource:
-    username: abtweb
-    password: Anbaotong20190424
-    url: jdbc:mysql://rm-8vb8oqp75c8s87l58fo.mysql.zhangbei.rds.aliyuncs.com:3306/web?useUnicode=true&characterEncoding=utf8&allowMutiQueries=true
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/web?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMutiQueries=true
     driver-class-name: com.mysql.cj.jdbc.Driver
   servlet:
     multipart:
