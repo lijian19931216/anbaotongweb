@@ -106,4 +106,36 @@ function utf16to8(str) {
     }  
     }  
     return out;  
-} 
+}
+function laypage(result){
+    layui.use(['laypage','jquery'], function() {
+
+        var laypage = layui.laypage,$ = layui.$;
+
+        laypage.render({
+            elem: "paging" //注意，这里的 test1 是 ID，不用加 # 号
+            ,count: result.total //数据总数，从服务端得到
+            , limit: result.pageSize                      //每页显示条数
+            // , limits: [10, 20, 30]
+            , curr: result.pageNum                        //起始页
+            , groups: 5                      //连续页码个数
+            , prev: '上一页'                 //上一页文本
+            , netx: '下一页'                 //下一页文本
+            , first: '首页'                      //首页文本
+            , last: '尾页'                    //尾页文本
+            ,theme:'#3477c8'
+            , layout: ['prev', 'page', 'next'/*,'limit','refresh','skip'*/]
+            //跳转页码时调用
+            , jump: function (obj, first) { //obj为当前页的属性和方法，第一次加载first为true
+                //非首次加载 do something
+                if (!first) {
+                    //清空以前加载的数据
+                    // $('#questionList').empty();
+                    //调用加载函数加载数据
+                    showList(obj.curr,obj.limit);
+                }
+            }
+        });
+
+    });
+}

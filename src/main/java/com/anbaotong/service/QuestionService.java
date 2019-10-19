@@ -14,7 +14,7 @@ public interface QuestionService {
     //新增问题答案
      void addQuestion(QuesAns quesAns) ;
 
-    List<QuesAns> listQuestions(QuesAns quesAns);
+    Object listQuestions(QuesAns quesAns);
 
     QuesAns getQuestionDetail(QuesAns quesAns);
 

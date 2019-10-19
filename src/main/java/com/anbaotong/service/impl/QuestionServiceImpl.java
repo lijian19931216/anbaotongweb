@@ -1,5 +1,6 @@
 package com.anbaotong.service.impl;
 
+import com.anbaotong.aspect.Paginate;
 import com.anbaotong.bean.QuesAns;
 import com.anbaotong.mapper.QuestionMapper;
 import com.anbaotong.service.QuestionService;
@@ -26,7 +27,8 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public List<QuesAns> listQuestions(QuesAns quesAns) {
+    @Paginate
+    public Object listQuestions(QuesAns quesAns) {
         return questionMapper.listQuestions(quesAns);
     }
 

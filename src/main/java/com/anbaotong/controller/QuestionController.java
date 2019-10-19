@@ -42,7 +42,7 @@ public class QuestionController {
         return new Result("0","新增成功");
     }
     @RequestMapping("/questionList")
-    public List<QuesAns> questionList(QuesAns quesAns) {
+    public Object questionList(QuesAns quesAns) {
         return questionService.listQuestions(quesAns);
     }
     @RequestMapping("/questionDetail")

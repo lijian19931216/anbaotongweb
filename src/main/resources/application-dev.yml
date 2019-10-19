@@ -24,3 +24,6 @@ logging:
         mapper : debug
 imagepath: F:/image/
 filepath: F:/file/
+pageHelper:
+ page: 1
+ pageSize: 10

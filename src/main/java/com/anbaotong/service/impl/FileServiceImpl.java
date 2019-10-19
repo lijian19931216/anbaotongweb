@@ -1,5 +1,7 @@
 package com.anbaotong.service.impl;
 
+import com.anbaotong.aspect.Paginate;
+import com.anbaotong.bean.BaseBean;
 import com.anbaotong.bean.FileBean;
 import com.anbaotong.mapper.FileMapper;
 import com.anbaotong.service.FileService;
@@ -25,7 +27,8 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public List<FileBean> getFileList() {
+    @Paginate
+    public Object getFileList(BaseBean baseBean) {
         return fileMapper.getFileList();
     }
 

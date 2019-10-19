@@ -24,3 +24,6 @@ logging:
         mapper : debug
 imagepath: /anbaotongweb/image/
 filepath: /anbaotongweb/file/
+pageHelper:
+  page: 1
+  pageSize: 10

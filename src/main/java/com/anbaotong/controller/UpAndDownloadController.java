@@ -1,5 +1,6 @@
 package com.anbaotong.controller;
 
+import com.anbaotong.bean.BaseBean;
 import com.anbaotong.bean.FileBean;
 import com.anbaotong.bean.FormBean;
 import com.anbaotong.bean.ProductImage;
@@ -207,7 +208,7 @@ public class UpAndDownloadController {
      * @return
      */
     @RequestMapping("/getFileList")
-    public List<FileBean> getFileList(){
-        return fileService.getFileList();
+    public Object getFileList(BaseBean baseBean){
+        return fileService.getFileList(baseBean);
     }
 }

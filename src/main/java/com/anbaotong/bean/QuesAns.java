@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class QuesAns {
+public class QuesAns extends BaseBean {
     /**
      * id
      */
