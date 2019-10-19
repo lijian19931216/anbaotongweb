@@ -11,7 +11,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -23,7 +22,6 @@ import java.util.List;
  * @create: 2019-10-19
  **/
 @Aspect
-@Configuration
 @Component
 @Slf4j
 public class PaginationAspect {
