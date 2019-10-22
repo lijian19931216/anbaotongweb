@@ -36,6 +36,7 @@
        select a.title,i.img_url imgUrl,a.id,a.desc_info descInfo
        from baike a left join image i on a.id=i.foreign_id
         where a.type = #{type}
+        order by a.time desc
     </select>
 
     <!--查询案例详情-->

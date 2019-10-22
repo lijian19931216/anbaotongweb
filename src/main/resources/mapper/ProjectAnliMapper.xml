@@ -40,10 +40,11 @@
     <select id="selectProjectAnliListByType" resultType="map" parameterType="projectanlibean" >
        select a.title,i.img_url imgUrl,a.id
        from `project_anli` a left join image i on a.id=i.foreign_id
-        where a.type = #{type}
-    </select>
+    <!-- where a.type = #{type}-->
+      order by a.time desc
+  </select>
 
-    <!--查询案例详情-->
+  <!--查询案例详情-->
     <select id="getProjectAnliDetail" resultMap="BaseResultMap" parameterType="java.lang.String" >
        select id, title, type, content
        from `project_anli`

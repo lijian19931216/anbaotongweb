@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="applicable-device" content="pc,mobile" />
-    <title>机房建设</title>
+    <title>独家策划</title>
 
 
     <link rel="icon" href="../../favicon.ico">
@@ -29,34 +29,49 @@
 <div id="head">
 
 </div>
+
     <!-- 内容 -->
     <div class="container">
         <div class="row">
+
             <div class="col-xs-12 col-sm-8 col-md-9" id="rightBox">
+
                 <div class="positionBox">
                     <div class="titleBar">
                         <h1>当前位置</h1>
                         <span></span>
-                        <a >经营业务</a>&gt;<a>机房建设</a>
+                        <a >家装攻略</a>&gt;<a>独家策划</a>
                     </div>
                 </div>
-
                 <div class="col-sm-12 col-md-12 pad">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-9 col-md-9">
+                                <div class="newsBox">
+
+                                    <ul id="baikeList" class="indexNewsList">
 
 
-                    <div id="content" class="detailContent">
+                                    </ul>
+                                </div>
+                            </div>
 
-
-
+                        </div>
                     </div>
 
-                    <!--<div class='pageBar'><div class='pageList'><a class='selected'>1</a></div></div>-->
+
+
+                    <!--
+
+                                        <div class='pageBar'><div class='pageList'><a class='selected'>1</a></div></div>
+                    -->
 
                 </div>
+
 
             </div>
 
-            <div id="left_product_menu">
+            <div id="left_cloud_menu">
 
             </div>
 
@@ -68,36 +83,47 @@
     
     <script type="text/javascript" src="../../js/common.js"></script>
     
+
     <script type="text/javascript">
         $("#head").load("../../common.html",function () {
-            $("#second_li>a").css({"background": "#3477c8","color":"#fff"});
+            $("#fourth_li>a").css({"background": "#3477c8","color":"#fff"});
         });
         $("#foot").load("../../common_foot.html");
-        $("#left_product_menu").load("../../left_product_menu.html",function () {
-            $("#_12").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").prev("span").click();;
+        $("#left_cloud_menu").load("../../left_cloud_menu.html",function () {
+            $("#_10").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").prev("span").click();
         });
         $(function () {
             $.ajax({
-                url: getUrl("busi/busiDetail"),
-                data: {type:3},
+                url: getUrl("baike/baikeList"),
+                data: {type:2},
                 type: "POST",
                 dataType: "json",
                 success: function(data) {
                     console.log(data);
-                    if(data){
-                        $("#title").html(data.title); //在html页面id=test的标签里显示html内容
-                        // $("#time").html(data.time); //在html页面id=test的标签里显示html内容
-                        $("#content").html(data.content); //在html页面id=test的标签里显示html内容
+                    var html = "";
+                    var baikeList = data;
+                    if(baikeList){
+                        for(var i=0;i<baikeList.length;i++){    //遍历data数组
+                            var ls = baikeList[i];
+                            html+=  "<li class='col-xs-12 col-sm-6 col-md-12'><a href="+ls.id+"'strategy_detail.html?id='>"+
+                                "<div class='img' style='background-image: url("+contextpath+ls.imgUrl+")'></div>"+
+                                "<div style='margin-left: 200px;' class='txt'><span style='font-size: 20px' class='title'>"+ls.title+
+                                "</span><br><p style='color: black;line-height: 20px;font-size: 13px;'>"+
+                                ls.descInfo+"</p></div></a></li>";
+                        }
+                        $("#baikeList").html(html); //在html页面id=test的标签里显示html内容
                     }
 
 
-                }});
+                }
+            });
 
         })
 
         if ($(".banner .slider__wrapper li").length == 0) {
             $(".banner").addClass("emptyBanner");
         }
+
 
     </script>
 

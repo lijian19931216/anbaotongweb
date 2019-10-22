@@ -39,8 +39,9 @@
     <!--查询案例列表-->
     <select id="selectRuoDianListByType" resultType="map" parameterType="ruoDianbean" >
        select a.title,i.img_url imgUrl,a.id
-       from ruoDian a left join image i on a.id=i.foreign_id
+       from ruodian a left join image i on a.id=i.foreign_id
         where a.type = #{type}
+        order by a.time desc
     </select>
 
     <!--查询案例详情-->
