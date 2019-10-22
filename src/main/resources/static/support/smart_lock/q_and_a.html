@@ -15,6 +15,8 @@
     <link href="../../css/glide.css" rel="stylesheet" />
     <link href="../../css/style.css" rel="stylesheet" />
     <link href="../../css/online.css" rel="stylesheet" />
+    <link href="../../layui/css/layui.css" rel="stylesheet" />
+    <script src="../../layui/layui.js" type="text/javascript"></script>
     <script src="../../js/jquery.min.js" type="text/javascript"></script>
     <script src="../../js/bootstrap.js" type="text/javascript"></script>
     <script src="../../js/jquery.glide.js" type="text/javascript"></script>
@@ -55,7 +57,7 @@
 
                                         <div class='pageBar'><div class='pageList'><a class='selected'>1</a></div></div>
                     -->
-
+                    <div id="paging" style="text-align: center;"></div>
                 </div>
 
 
@@ -77,7 +79,7 @@
         $("#left_support_menu").load("../../left_support_menu.html",function () {
             $("#_6").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").prev("span").click();;
         });
-        $(function () {
+        function showList(currentPage,pageSize){
             $.ajax({
                 url: getUrl("question/questionList"),
                 data: {type:2},
@@ -86,7 +88,7 @@
                 success: function(data) {
                     console.log(data);
                     var html = "";
-                    var questionList = data;
+                    var questionList = data.list;
                     if(questionList){
                         for(var i=0;i<questionList.length;i++){    //遍历data数组
                             var ls = questionList[i];
@@ -96,12 +98,13 @@
                         }
                         $("#questionList").html(html); //在html页面id=test的标签里显示html内容
                     }
-
+                    laypage(data);
 
                 }});
-
+        }
+        $(function () {
+            showList(1,20);
         });
-
         if ($(".banner .slider__wrapper li").length == 0) {
             $(".banner").addClass("emptyBanner");
         }
