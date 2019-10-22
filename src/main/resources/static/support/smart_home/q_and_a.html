@@ -88,9 +88,8 @@
                 dataType: "json",
                 success: function(result) {
                     console.log(result);
-                    var data = result;
                     var html = "";
-                    var questionList = data.list;
+                    var questionList = result.list;
                     if(questionList){
                         for(var i=0;i<questionList.length;i++){    //遍历data数组
                             var ls = questionList[i];
@@ -107,7 +106,7 @@
         }
         $(function () {
 
-            showList(1,10);
+            showList(1,20);
 
         });
 

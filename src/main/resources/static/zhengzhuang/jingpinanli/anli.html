@@ -99,7 +99,7 @@
                 success: function(data) {
                     console.log(data);
                     var html = "";
-                    var anliList = data;
+                    var anliList = data.list;
                     if(anliList){
                         for(var i=0;i<anliList.length;i++){    //遍历data数组
                             var ls = anliList[i];

@@ -1,5 +1,6 @@
 package com.anbaotong.service.impl;
 
+import com.anbaotong.aspect.Paginate;
 import com.anbaotong.bean.BaikeBean;
 import com.anbaotong.bean.ImageBean;
 import com.anbaotong.mapper.BaikeMapper;
@@ -7,8 +8,6 @@ import com.anbaotong.service.BaikeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * @description:
@@ -28,7 +27,8 @@ public class BaikeServiceImpl implements BaikeService {
     }
 
     @Override
-    public List<BaikeBean> listBaike(BaikeBean baikeBean) {
+    @Paginate
+    public Object listBaike(BaikeBean baikeBean) {
         return baikeMapper.selectBaikeListByType(baikeBean);
     }
 

@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @create: 2019-10-05
  **/
 @Data
-public class BaikeBean {
+public class BaikeBean extends BaseBean {
     /**
      * id
      */

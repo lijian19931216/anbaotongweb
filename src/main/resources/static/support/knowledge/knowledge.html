@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="applicable-device" content="pc,mobile" />
-    <title>设计团队</title>
+    <title>服务支持</title>
 
 
     <link rel="icon" href="../../favicon.ico">
@@ -30,6 +30,7 @@
 
 </div>
 
+    
     <!-- 内容 -->
     <div class="container">
         <div class="row">
@@ -40,27 +41,25 @@
                     <div class="titleBar">
                         <h1>当前位置</h1>
                         <span></span>
-                        <a >家装攻略</a>&gt;<a>装修百科</a>
+                        <a >服务支持</a>&gt;<a>维护知识</a>
                     </div>
                 </div>
+
                 <div class="col-sm-12 col-md-12 pad">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-9 col-md-9">
-                                <div class="newsBox">
-
-                                    <ul id="baikeList" class="indexNewsList">
+                    <div class="nameList" style="margin-top:10px;">
+                        <ul id="questionList">
 
 
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
+                        </ul>
                     </div>
+                    <!--
 
-
+                                                           <div class='pageBar'><div class='pageList'><a class='selected'>1</a></div></div>
+                                       -->
                     <div id="paging" style="text-align: center;"></div>
+
+
+
                     <!--
 
                                         <div class='pageBar'><div class='pageList'><a class='selected'>1</a></div></div>
@@ -71,7 +70,7 @@
 
             </div>
 
-            <div id="left_cloud_menu">
+            <div id="left_support_menu">
 
             </div>
 
@@ -81,47 +80,49 @@
     
 
     
-    <script type="text/javascript" src="../../js/common.js"></script>
+    <!--<script type="text/javascript" src="../js/common.js"></script>-->
     
 
+
+
+
     <script type="text/javascript">
-        $("#head").load("../../common.html",function () {
-            $("#fourth_li>a").css({"background": "#3477c8","color":"#fff"});
+        $("#head").load("../common.html",function () {
+            $("#sixth_li>a").css({"background": "#3477c8","color":"#fff"});
         });
-        $("#foot").load("../../common_foot.html");
-        $("#left_cloud_menu").load("../../left_cloud_menu.html",function () {
-            $("#_9").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").prev("span").click();
+        $("#foot").load("../common_foot.html");
+        $("#left_support_menu").load("../left_support_menu.html",function () {
+            $("#_3").css({"font-weight": "bold","color":"#3477c8"});
         });
         function showList(currentPage,pageSize){
             $.ajax({
-                url: getUrl("baike/baikeList"),
-                data: {type:1},
+                url: getUrl("question/questionList"),
+                data: {type:6,currentPage:currentPage,pageSize:pageSize},
                 type: "POST",
                 dataType: "json",
-                success: function(data) {
-                    console.log(data);
+                success: function(result) {
+                    console.log(result);
                     var html = "";
-                    var baikeList = data.list;
-                    if(baikeList){
-                        for(var i=0;i<baikeList.length;i++){    //遍历data数组
-                            var ls = baikeList[i];
-                            html+=  "<li class='col-xs-12 col-sm-6 col-md-12'><a href='baike_detail.html?id="+ls.id+"'>"+
-                                "<div class='img' style='background-image: url("+contextpath+ls.imgUrl+")'></div>"+
-                                "<div style='margin-left: 200px;' class='txt'><span style='font-size: 20px' class='title'>"+ls.title+
-                                "</span><br><p style='color: black;line-height: 20px;font-size: 13px;'>"+
-                                ls.descInfo+"</p></div></a></li>";
-                        }
-                        $("#baikeList").html(html); //在html页面id=test的标签里显示html内容
-                    }
-                    laypage(data);
+                    var questionList = result.list;
+                    if(questionList){
+                        for(var i=0;i<questionList.length;i++){    //遍历data数组
+                            var ls = questionList[i];
+                            html+="<li><span>"+(i +1)+"</span><a href='answer.html?id="+ls.id+"'>"+ls.question
 
-                }
-            });
+                                +"</a></li>";
+                        }
+                        $("#questionList").html(html); //在html页面id=test的标签里显示html内容
+                    }
+                    laypage(result);
+
+
+                }});
         }
         $(function () {
 
-            showList(1,10);
-        })
+            showList(1,20);
+
+        });
 
         if ($(".banner .slider__wrapper li").length == 0) {
             $(".banner").addClass("emptyBanner");

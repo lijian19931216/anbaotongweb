@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 /**
  * @description:
  * @author: lijian
@@ -36,7 +34,7 @@ public class BaikeController {
         return new Result("0","新增成功");
     }
     @RequestMapping("/baikeList")
-    public List<BaikeBean> BaikeList(BaikeBean baikeBean) {
+    public Object BaikeList(BaikeBean baikeBean) {
         return baikeService.listBaike(baikeBean);
     }
     @RequestMapping("/baikeDetail")
