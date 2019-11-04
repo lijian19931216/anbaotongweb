@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="applicable-device" content="pc,mobile" />
-    <title>视频案例</title>
+    <title>全屋整装</title>
 
 
     <link rel="icon" href="../../favicon.ico">
@@ -31,9 +31,7 @@
 <div id="head">
 
 </div>
-    <script type="text/javascript">
-        var glide = $('.slider').glide();
-    </script>
+
     
     <!-- 内容 -->
     <div class="container">
@@ -45,7 +43,7 @@
                     <div class="titleBar">
                         <h1>当前位置</h1>
                         <span></span>
-                        <a >整装云</a>&gt;<a>家装案例</a>&gt;<a>视频案例</a>
+                        <a >整装云</a>&gt;<a>整装产品</a>&gt;<a>全屋整装</a>
                     </div>
                 </div>
 
@@ -90,12 +88,12 @@
         });
         $("#foot").load("../../common_foot.html");
         $("#left_cloud_menu").load("../../left_cloud_menu.html",function () {
-            $("#_4").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").prev("span").click();;
+            $("#_7").css({"font-weight": "bold","color":"#3477c8"}).parents("ul").prev("span").click();;
         });
         function showList(currentPage,pageSize){
             $.ajax({
-                url: getUrl("anli/anliList"),
-                data: {type:2},
+                url: getUrl("zzproduct/zhengProductList"),
+                data: {type:1,currentPage:currentPage,pageSize:pageSize},
                 type: "POST",
                 dataType: "json",
                 success: function(data) {
@@ -106,14 +104,16 @@
                         for(var i=0;i<anliList.length;i++){    //遍历data数组
                             var ls = anliList[i];
                             html+="<div class='col-xs-6 productImg'>"+
-                                "  <video controls style='height: 250px;width: 100%' src='"+contextpath+ls.imgUrl+"' />"+
+                                "<a href='product_detail.html?id="+ls.id+"'>"+
+                                "  <img style='height: 250px;' src='"+contextpath+ls.imgUrl+"' /></a>"+
                                 "  <a class='productTitle' href='javascript:;' >"+
                                 ls.title+"</a></div>";
                         }
                         $("#anli_list").html(html); //在html页面id=test的标签里显示html内容
                     }
-
                     laypage(data);
+
+
                 }
             });
         }
