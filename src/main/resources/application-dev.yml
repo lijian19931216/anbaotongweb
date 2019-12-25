@@ -25,5 +25,5 @@ logging:
 imagepath: F:/image/
 filepath: F:/file/
 pageHelper:
- page: 1
- pageSize: 10
+  page: 1
+  pageSize: 10
